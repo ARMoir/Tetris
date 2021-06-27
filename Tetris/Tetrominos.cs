@@ -23,41 +23,42 @@ namespace Tetris
             if(Block.Set)
             {
                 Block.Set = false;
-                Block.Random.Next(0,8);
-                IBlock();
+                
+                switch (Block.Random.Next(0, 8))
+                {
+                    default:
+                        JBlock();
+                        break;
+                }
             }
         }
 
         public static void IBlock()
         {
-            Block.Current.Add(Program.Display.Position + Program.Display.Width);
-            Block.Current.Add(Program.Display.Position + Program.Display.Width + 1);
-            Block.Current.Add(Program.Display.Position + (Program.Display.Width * 2));
-            Block.Current.Add(Program.Display.Position + (Program.Display.Width * 2) + 1);
-            Block.Current.Add(Program.Display.Position + (Program.Display.Width * 3));
-            Block.Current.Add(Program.Display.Position + (Program.Display.Width * 3) +1);
-            Block.Current.Add(Program.Display.Position + (Program.Display.Width * 4));
-            Block.Current.Add(Program.Display.Position + (Program.Display.Width * 4) + 1);
-            Block.Next.Add(Program.Display.Position + Program.Display.Width);
-            Block.Next.Add(Program.Display.Position + Program.Display.Width + 1);
+            Block.Next.Add(Program.Display.Position);
+            Block.Next.Add(Program.Display.Position + 1);
+            Block.Next.Add(Program.Display.Position + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + (Program.Display.Width * 1) + 1);
             Block.Next.Add(Program.Display.Position + (Program.Display.Width * 2));
             Block.Next.Add(Program.Display.Position + (Program.Display.Width * 2) + 1);
             Block.Next.Add(Program.Display.Position + (Program.Display.Width * 3));
             Block.Next.Add(Program.Display.Position + (Program.Display.Width * 3) + 1);
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width * 4));
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width * 4) + 1);
-            //Program.Display.FrameChar[Program.Display.Position + (Program.Display.Width)] = "[";
-            //Program.Display.FrameChar[Program.Display.Position + (Program.Display.Width) + 1] = "]";
-            //Program.Display.FrameChar[Program.Display.Position + (Program.Display.Width * 2)] = "[";
-            //Program.Display.FrameChar[Program.Display.Position + (Program.Display.Width * 2) + 1] = "]";
-            //Program.Display.FrameChar[Program.Display.Position + (Program.Display.Width * 3)] = "[";
-            //Program.Display.FrameChar[Program.Display.Position + (Program.Display.Width * 3) + 1] = "]";
-            //Program.Display.FrameChar[Program.Display.Position + (Program.Display.Width * 4)] = "[";
-            //Program.Display.FrameChar[Program.Display.Position + (Program.Display.Width * 4) + 1] = "]";
         }
 
         public static void JBlock()
         {
+            Block.Next.Add(Program.Display.Position - 1);
+            Block.Next.Add(Program.Display.Position - 2);
+            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + Program.Display.Width);
+            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 1);
+            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 2);
+            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 3);
+            //Block.Next.Add(Program.Display.Position + (Program.Display.Width * 2));
+            //Block.Next.Add(Program.Display.Position + (Program.Display.Width * 2) + 1);
+            //Block.Next.Add(Program.Display.Position + (Program.Display.Width * 3));
+            //Block.Next.Add(Program.Display.Position + (Program.Display.Width * 3) + 1);
 
         }
 

@@ -18,6 +18,7 @@ namespace Tetris
             public static int Width { get; set; } = 0;
             public static int Position { get; set; } = 0;
             public static int Speed { get; set; } = 1000;
+            public static bool Start { get; set; } = true;
         }
 
         static void Main(string[] args)
@@ -26,8 +27,6 @@ namespace Tetris
             Console.Clear();
             Frame.SetFrame();
             Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
-            
-
 
             //Set the Values for Movement Calculations
             string[] Lines = Display.FrameString.ToString().Split((Char)10);
@@ -37,11 +36,8 @@ namespace Tetris
             //Start Thred to Read Keypress
             Task.Factory.StartNew(() => Key.Press());
 
-            //Tetrominos.IBlock();
-
             while (true) 
             {
-                //
                 Tetrominos.New();
                 Console.ForegroundColor = Display.Color;
 
@@ -52,13 +48,15 @@ namespace Tetris
                 for (var i = 0; i < Tetrominos.Block.Current.Count; i++)
                 {
 
-                    if (i % 2 == 0)
+                    if (Display.Start)
                     {
-                        Display.FrameChar[Tetrominos.Block.Current[i]] = Tetrominos.Block.Values[0];
+                        Display.FrameChar[Tetrominos.Block.Current[i]] = Tetrominos.Block.Values[1];
+                        Display.Start = false;
                     }
                     else
                     {
-                        Display.FrameChar[Tetrominos.Block.Current[i]] = Tetrominos.Block.Values[1];
+                        Display.FrameChar[Tetrominos.Block.Current[i]] = Tetrominos.Block.Values[0];
+                        Display.Start = true;
                     }
 
                     if (Frame.Wall.Values.Contains(Display.FrameChar[Tetrominos.Block.Current[i] + Display.Width]))
