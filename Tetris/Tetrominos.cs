@@ -23,7 +23,7 @@ namespace Tetris
             {
                 Block.Set = false;
                 
-                switch (Block.Random.Next(0, 7))
+                switch (Block.Random.Next(7))
                 {
                     case 0:
                         IBlock();
@@ -34,23 +34,23 @@ namespace Tetris
                         break;
 
                     case 2:
-                        IBlock();
+                        LBlock();
                         break;
 
                     case 3:
-                        JBlock();
+                        OBlock();
                         break;
 
                     case 4:
-                        IBlock();
+                        SBlock();
                         break;
 
                     case 5:
-                        JBlock();
+                        TBlock();
                         break;
 
                     case 6:
-                        IBlock();
+                        ZBlock();
                         break;
                 }
             }
@@ -82,27 +82,63 @@ namespace Tetris
 
         public static void LBlock()
         {
-
+            Block.Next.Add(Program.Display.Position + 2);
+            Block.Next.Add(Program.Display.Position + 3);
+            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + Program.Display.Width);
+            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 1);
+            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 2);
+            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 3);
         }
 
         public static void OBlock()
         {
-
+            Block.Next.Add(Program.Display.Position);
+            Block.Next.Add(Program.Display.Position + 1);
+            Block.Next.Add(Program.Display.Position - 1);
+            Block.Next.Add(Program.Display.Position - 2);
+            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + Program.Display.Width);
+            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 1);
         }
 
         public static void SBlock()
         {
+            Block.Next.Add(Program.Display.Position);
+            Block.Next.Add(Program.Display.Position + 1);
+            Block.Next.Add(Program.Display.Position + 2);
+            Block.Next.Add(Program.Display.Position + 3);
+            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + Program.Display.Width);
+            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 1);
 
         }
 
         public static void TBlock()
         {
-
+            Block.Next.Add(Program.Display.Position);
+            Block.Next.Add(Program.Display.Position + 1);
+            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + Program.Display.Width);
+            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 1);
+            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 2);
+            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 3);
         }
 
         public static void ZBlock()
         {
-
+            Block.Next.Add(Program.Display.Position - 3);
+            Block.Next.Add(Program.Display.Position - 4);
+            Block.Next.Add(Program.Display.Position - 1);
+            Block.Next.Add(Program.Display.Position - 2);
+            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + Program.Display.Width);
+            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 1);
         }
     }
 }
