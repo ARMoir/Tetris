@@ -10,7 +10,6 @@ namespace Tetris
     {
         public static class Block
         {
-            public static string[] Values { get; set; } = { "[", "]"};
             public static List<int> Current { get; set; } = new List<int>();
             public static List<int> Next { get; set; } = new List<int>();
             public static List<int> Placed { get; set; } = new List<int>();
@@ -24,10 +23,34 @@ namespace Tetris
             {
                 Block.Set = false;
                 
-                switch (Block.Random.Next(0, 8))
+                switch (Block.Random.Next(0, 7))
                 {
-                    default:
+                    case 0:
+                        IBlock();
+                        break;
+
+                    case 1:
                         JBlock();
+                        break;
+
+                    case 2:
+                        IBlock();
+                        break;
+
+                    case 3:
+                        JBlock();
+                        break;
+
+                    case 4:
+                        IBlock();
+                        break;
+
+                    case 5:
+                        JBlock();
+                        break;
+
+                    case 6:
+                        IBlock();
                         break;
                 }
             }
@@ -55,11 +78,6 @@ namespace Tetris
             Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 1);
             Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 2);
             Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 3);
-            //Block.Next.Add(Program.Display.Position + (Program.Display.Width * 2));
-            //Block.Next.Add(Program.Display.Position + (Program.Display.Width * 2) + 1);
-            //Block.Next.Add(Program.Display.Position + (Program.Display.Width * 3));
-            //Block.Next.Add(Program.Display.Position + (Program.Display.Width * 3) + 1);
-
         }
 
         public static void LBlock()

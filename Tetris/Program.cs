@@ -14,6 +14,7 @@ namespace Tetris
             public static List<string> FrameChar { get; set; } = new List<string>();
             public static StringBuilder FrameString { get; set; } = new StringBuilder();
             public static StringBuilder DisplayFrame { get; set; } = new StringBuilder();
+            public enum Status { Active, Placed }
             public static ConsoleColor Color { get; set; } = ConsoleColor.Green;
             public static int Width { get; set; } = 0;
             public static int Position { get; set; } = 0;
@@ -45,23 +46,20 @@ namespace Tetris
                 Tetrominos.Block.Current.AddRange(Tetrominos.Block.Next);
                 Tetrominos.Block.Next.Clear();
 
+                for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
+                {
+                    Display.FrameChar[Tetrominos.Block.Placed[i]] = ((int)Display.Status.Placed).ToString();
+                }
+
                 for (var i = 0; i < Tetrominos.Block.Current.Count; i++)
                 {
 
-                    if (Display.Start)
-                    {
-                        Display.FrameChar[Tetrominos.Block.Current[i]] = Tetrominos.Block.Values[1];
-                        Display.Start = false;
-                    }
-                    else
-                    {
-                        Display.FrameChar[Tetrominos.Block.Current[i]] = Tetrominos.Block.Values[0];
-                        Display.Start = true;
-                    }
+                    Display.FrameChar[Tetrominos.Block.Current[i]] = ((int)(Display.Status.Active)).ToString();
 
                     if (Frame.Wall.Values.Contains(Display.FrameChar[Tetrominos.Block.Current[i] + Display.Width]))
                     {
                         Tetrominos.Block.Placed.AddRange(Tetrominos.Block.Current);
+                        Tetrominos.Block.Current.Clear();
                         Tetrominos.Block.Next.Clear();
                         Tetrominos.Block.Set = true;
                         Display.Speed = 1000;
@@ -73,31 +71,24 @@ namespace Tetris
                     
                 }
 
+                for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
+                {
+                    Display.FrameChar[Tetrominos.Block.Placed[i]] = ((int)Display.Status.Placed).ToString();
+                }
+
                 //Update Display
                 Display.DisplayFrame.Clear();
                 Display.FrameChar.ForEach(Item => Display.DisplayFrame.Append(Item));
 
                 //Write Display to Console
                 Console.SetCursorPosition(0, 0);
+                Display.DisplayFrame.Replace(((int)Display.Status.Active).ToString() + ((int)Display.Status.Active).ToString(), "[]");
+                Display.DisplayFrame.Replace(((int)Display.Status.Placed).ToString() + ((int)Display.Status.Placed).ToString(), "[]");
                 Console.Write(Display.DisplayFrame);
                 System.Threading.Thread.Sleep(Display.Speed);
 
-                for (var i = 0; i < Tetrominos.Block.Current.Count; i++)
-                {
-                    Display.FrameChar[Tetrominos.Block.Current[i]] = " ";
-                }
-
-                for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
-                {
-                    if (i % 2 == 0)
-                    {
-                        Display.FrameChar[Tetrominos.Block.Placed[i]] = Tetrominos.Block.Values[0];
-                    }
-                    else
-                    {
-                        Display.FrameChar[Tetrominos.Block.Placed[i]] = Tetrominos.Block.Values[1];
-                    }
-                }
+                Display.FrameChar.Clear();
+                Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
 
             } 
         }
