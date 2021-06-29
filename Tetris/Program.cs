@@ -19,7 +19,7 @@ namespace Tetris
             public static int Width { get; set; } = 0;
             public static int Active { get; set; } = 0;
             public static int Position { get; set; } = 0;
-            public static int Speed { get; set; } = 1000;
+            public static int Speed { get; set; } = 400;
             public static bool Start { get; set; } = true;
         }
 
@@ -65,7 +65,7 @@ namespace Tetris
                             Tetrominos.Block.Current.Clear();
                             Tetrominos.Block.Next.Clear();
                             Tetrominos.Block.Set = true;
-                            Display.Speed = 1000;
+                            Display.Speed = 400;
                         }
                         else
                         {
