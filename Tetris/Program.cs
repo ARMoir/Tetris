@@ -17,6 +17,7 @@ namespace Tetris
             public enum Status { Active, Placed }
             public static ConsoleColor Color { get; set; } = ConsoleColor.Green;
             public static int Width { get; set; } = 0;
+            public static int Active { get; set; } = 0;
             public static int Position { get; set; } = 0;
             public static int Speed { get; set; } = 1000;
             public static bool Start { get; set; } = true;
@@ -51,24 +52,31 @@ namespace Tetris
                     Display.FrameChar[Tetrominos.Block.Placed[i]] = ((int)Display.Status.Placed).ToString();
                 }
 
-                for (var i = 0; i < Tetrominos.Block.Current.Count; i++)
+                try
                 {
-
-                    Display.FrameChar[Tetrominos.Block.Current[i]] = ((int)(Display.Status.Active)).ToString();
-
-                    if (Frame.Wall.Values.Contains(Display.FrameChar[Tetrominos.Block.Current[i] + Display.Width]))
+                    for (var i = 0; i < Tetrominos.Block.Current.Count; i++)
                     {
-                        Tetrominos.Block.Placed.AddRange(Tetrominos.Block.Current);
-                        Tetrominos.Block.Current.Clear();
-                        Tetrominos.Block.Next.Clear();
-                        Tetrominos.Block.Set = true;
-                        Display.Speed = 1000;
+
+                        Display.FrameChar[Tetrominos.Block.Current[i]] = ((int)(Display.Status.Active)).ToString();
+
+                        if (Frame.Wall.Values.Contains(Display.FrameChar[Tetrominos.Block.Current[i] + Display.Width]))
+                        {
+                            Tetrominos.Block.Placed.AddRange(Tetrominos.Block.Current);
+                            Tetrominos.Block.Current.Clear();
+                            Tetrominos.Block.Next.Clear();
+                            Tetrominos.Block.Set = true;
+                            Display.Speed = 1000;
+                        }
+                        else
+                        {
+                            Tetrominos.Block.Next.Add(Tetrominos.Block.Current[i] + Display.Width);
+                        }
+
                     }
-                    else
-                    {
-                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[i] + Display.Width);
-                    }
-                    
+                }
+                catch (Exception)
+                {
+                    Rotate.Now();
                 }
 
                 for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)

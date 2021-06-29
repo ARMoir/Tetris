@@ -14,6 +14,7 @@ namespace Tetris
             public static List<int> Next { get; set; } = new List<int>();
             public static List<int> Placed { get; set; } = new List<int>();
             public static bool Set { get; set; } = true;
+            public enum Tetromino { IBlock, JBlock, LBlock, OBlock, SBlock, TBlock, ZBlock }
             public static Random Random { get; set; } = new Random();
         }
 
@@ -22,35 +23,36 @@ namespace Tetris
             if(Block.Set)
             {
                 Block.Set = false;
-                
+                Rotate.Check.Count = 0;
+
                 switch (Block.Random.Next(7))
                 {
-                    case 0:
+                    case (int)Block.Tetromino.IBlock:
                         IBlock();
                         break;
 
-                    case 1:
-                        JBlock();
+                    case (int)Block.Tetromino.JBlock:
+                        IBlock();
                         break;
 
-                    case 2:
-                        LBlock();
+                    case (int)Block.Tetromino.LBlock:
+                        IBlock();
                         break;
 
-                    case 3:
-                        OBlock();
+                    case (int)Block.Tetromino.OBlock:
+                        IBlock();
                         break;
 
-                    case 4:
-                        SBlock();
+                    case (int)Block.Tetromino.SBlock:
+                        IBlock();
                         break;
 
-                    case 5:
-                        TBlock();
+                    case (int)Block.Tetromino.TBlock:
+                        IBlock();
                         break;
 
-                    case 6:
-                        ZBlock();
+                    case (int)Block.Tetromino.ZBlock:
+                        IBlock();
                         break;
                 }
             }
@@ -58,30 +60,34 @@ namespace Tetris
 
         public static void IBlock()
         {
-            Block.Next.Add(Program.Display.Position);
-            Block.Next.Add(Program.Display.Position + 1);
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width * 1));
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width * 1) + 1);
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width * 2));
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width * 2) + 1);
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width * 3));
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width * 3) + 1);
+            Program.Display.Active = (int)Block.Tetromino.IBlock;
+            Block.Next.Add(Program.Display.Position - 4 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position - 3 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 0 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 1 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 2 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 3 + (Program.Display.Width * 0));
+
         }
 
         public static void JBlock()
         {
-            Block.Next.Add(Program.Display.Position - 1);
-            Block.Next.Add(Program.Display.Position - 2);
-            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 1));
-            Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 1));
-            Block.Next.Add(Program.Display.Position + Program.Display.Width);
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 1);
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 2);
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 3);
+            Program.Display.Active = (int)Block.Tetromino.JBlock;
+            Block.Next.Add(Program.Display.Position + 0 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 1 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 0 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + 1 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + 0 + (Program.Display.Width * 2));
+            Block.Next.Add(Program.Display.Position + 1 + (Program.Display.Width * 2));
+            Block.Next.Add(Program.Display.Position + 2 + (Program.Display.Width * 2));
+            Block.Next.Add(Program.Display.Position + 3 + (Program.Display.Width * 2));
         }
 
         public static void LBlock()
         {
+            Program.Display.Active = (int)Block.Tetromino.LBlock;
             Block.Next.Add(Program.Display.Position + 2);
             Block.Next.Add(Program.Display.Position + 3);
             Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 1));
@@ -94,6 +100,7 @@ namespace Tetris
 
         public static void OBlock()
         {
+            Program.Display.Active = (int)Block.Tetromino.OBlock;
             Block.Next.Add(Program.Display.Position);
             Block.Next.Add(Program.Display.Position + 1);
             Block.Next.Add(Program.Display.Position - 1);
@@ -106,6 +113,7 @@ namespace Tetris
 
         public static void SBlock()
         {
+            Program.Display.Active = (int)Block.Tetromino.SBlock;
             Block.Next.Add(Program.Display.Position);
             Block.Next.Add(Program.Display.Position + 1);
             Block.Next.Add(Program.Display.Position + 2);
@@ -119,6 +127,7 @@ namespace Tetris
 
         public static void TBlock()
         {
+            Program.Display.Active = (int)Block.Tetromino.TBlock;
             Block.Next.Add(Program.Display.Position);
             Block.Next.Add(Program.Display.Position + 1);
             Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 1));
@@ -131,6 +140,7 @@ namespace Tetris
 
         public static void ZBlock()
         {
+            Program.Display.Active = (int)Block.Tetromino.ZBlock;
             Block.Next.Add(Program.Display.Position - 3);
             Block.Next.Add(Program.Display.Position - 4);
             Block.Next.Add(Program.Display.Position - 1);

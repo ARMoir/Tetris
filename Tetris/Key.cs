@@ -28,16 +28,16 @@ namespace Tetris
                 {
                     case ConsoleKey.UpArrow:
                     case ConsoleKey.W:
-                        Tetrominos.Block.Next.Clear();
-                        //Tetrominos.Block.Next.Reverse();
-                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[0]);
-                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[1]);
-                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[2] - Program.Display.Width + 2);
-                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[3] - Program.Display.Width + 2);
-                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[4] - (Program.Display.Width * 2) - 2);
-                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[5] - (Program.Display.Width * 2) - 2);
-                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[6] - (Program.Display.Width * 3) - 4);
-                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[7] - (Program.Display.Width * 3) - 4);
+                        Rotate.Now();
+                        //Tetrominos.Block.Next.Clear();
+                        //Tetrominos.Block.Next.Add(Tetrominos.Block.Current[0]);
+                        //Tetrominos.Block.Next.Add(Tetrominos.Block.Current[1]);
+                        //Tetrominos.Block.Next.Add(Tetrominos.Block.Current[2] - Program.Display.Width + 2);
+                        //Tetrominos.Block.Next.Add(Tetrominos.Block.Current[3] - Program.Display.Width + 2);
+                        //Tetrominos.Block.Next.Add(Tetrominos.Block.Current[4] - (Program.Display.Width * 2) - 2);
+                        //Tetrominos.Block.Next.Add(Tetrominos.Block.Current[5] - (Program.Display.Width * 2) - 2);
+                        //Tetrominos.Block.Next.Add(Tetrominos.Block.Current[6] - (Program.Display.Width * 3) - 4);
+                        //Tetrominos.Block.Next.Add(Tetrominos.Block.Current[7] - (Program.Display.Width * 3) - 4);
                         break;
 
                     case ConsoleKey.LeftArrow:
