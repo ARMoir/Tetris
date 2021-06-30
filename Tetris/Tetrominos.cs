@@ -28,11 +28,11 @@ namespace Tetris
                 switch (Block.Random.Next(7))
                 {
                     case (int)Block.Tetromino.IBlock:
-                       LBlock();
+                       IBlock();
                         break;
 
                     case (int)Block.Tetromino.JBlock:
-                        LBlock();
+                        JBlock();
                         break;
 
                     case (int)Block.Tetromino.LBlock:
@@ -40,19 +40,19 @@ namespace Tetris
                         break;
 
                     case (int)Block.Tetromino.OBlock:
-                        LBlock();
+                        OBlock();
                         break;
 
                     case (int)Block.Tetromino.SBlock:
-                        LBlock();
+                        SBlock();
                         break;
 
                     case (int)Block.Tetromino.TBlock:
-                        LBlock();
+                        TBlock();
                         break;
 
                     case (int)Block.Tetromino.ZBlock:
-                        LBlock();
+                        ZBlock();
                         break;
                 }
             }
@@ -101,54 +101,54 @@ namespace Tetris
         public static void OBlock()
         {
             Program.Display.Active = (int)Block.Tetromino.OBlock;
-            Block.Next.Add(Program.Display.Position);
-            Block.Next.Add(Program.Display.Position + 1);
-            Block.Next.Add(Program.Display.Position - 1);
-            Block.Next.Add(Program.Display.Position - 2);
-            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + 0 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 1 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 0));
             Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 1));
-            Block.Next.Add(Program.Display.Position + Program.Display.Width);
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 1);
+            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + 1 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + 0 + (Program.Display.Width * 1));
         }
 
         public static void SBlock()
         {
             Program.Display.Active = (int)Block.Tetromino.SBlock;
-            Block.Next.Add(Program.Display.Position);
-            Block.Next.Add(Program.Display.Position + 1);
-            //Block.Next.Add(Program.Display.Position + 2);
-            //Block.Next.Add(Program.Display.Position + 3);
-            //Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 1));
-            //Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 1));
-            //Block.Next.Add(Program.Display.Position + Program.Display.Width);
-            //Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 1);
+            Block.Next.Add(Program.Display.Position + 0 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 1 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 2 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 3 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + 0 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + 1 + (Program.Display.Width * 1));
 
         }
 
         public static void TBlock()
         {
             Program.Display.Active = (int)Block.Tetromino.TBlock;
-            Block.Next.Add(Program.Display.Position);
-            Block.Next.Add(Program.Display.Position + 1);
-            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 1));
-            Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 1));
-            Block.Next.Add(Program.Display.Position + Program.Display.Width);
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 1);
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 2);
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 3);
+            Block.Next.Add(Program.Display.Position + 0 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 1 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 0 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + 1 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + 2 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 3 + (Program.Display.Width * 0));
         }
 
         public static void ZBlock()
         {
             Program.Display.Active = (int)Block.Tetromino.ZBlock;
-            Block.Next.Add(Program.Display.Position - 3);
-            Block.Next.Add(Program.Display.Position - 4);
-            Block.Next.Add(Program.Display.Position - 1);
-            Block.Next.Add(Program.Display.Position - 2);
-            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 1));
-            Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 1));
-            Block.Next.Add(Program.Display.Position + Program.Display.Width);
-            Block.Next.Add(Program.Display.Position + (Program.Display.Width) + 1);
+            Block.Next.Add(Program.Display.Position + 0 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 1 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 2 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + 3 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position - 1 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position - 2 + (Program.Display.Width * 0));
+            Block.Next.Add(Program.Display.Position + 0 + (Program.Display.Width * 1));
+            Block.Next.Add(Program.Display.Position + 1 + (Program.Display.Width * 1));
         }
     }
 }

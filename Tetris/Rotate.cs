@@ -12,6 +12,7 @@ namespace Tetris
         public static class Check
         {
             public static int Count { get; set; } = 0;
+            public static bool Lock { get; set; } = false;
         }
 
         public static void Now()
@@ -35,15 +36,15 @@ namespace Tetris
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.SBlock:
-                    IBlockRotate();
+                    SBlockRotate();
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.TBlock:
-                    IBlockRotate();
+                    TBlockRotate();
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.ZBlock:
-                    IBlockRotate();
+                    ZBlockRotate();
                     break;
             }
         }
@@ -205,6 +206,146 @@ namespace Tetris
                         Tetrominos.Block.Next.Add(Tetrominos.Block.Current[5] + 2 - (Program.Display.Width * 2));
                         Tetrominos.Block.Next.Add(Tetrominos.Block.Current[6] + 0 + (Program.Display.Width * 1));
                         Tetrominos.Block.Next.Add(Tetrominos.Block.Current[7] + 0 + (Program.Display.Width * 1));
+                        Check.Count = 0;
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        public static void SBlockRotate()
+        {
+            try
+            {
+                switch (Check.Count)
+                {
+                    case 0:
+                        Tetrominos.Block.Next.Clear();
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[0] + 0 - (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[1] + 0 - (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[2] - 2 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[3] - 2 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[4] + 4 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[5] + 4 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[6] + 2 - (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[7] + 2 - (Program.Display.Width * 0));
+                        Check.Count = 1;
+                        break;
+
+                    case 1:
+                        Tetrominos.Block.Next.Clear();
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[0] - 0 + (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[1] - 0 + (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[2] + 2 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[3] + 2 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[4] - 4 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[5] - 4 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[6] - 2 + (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[7] - 2 + (Program.Display.Width * 0));
+                        Check.Count = 0;
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        public static void TBlockRotate()
+        {
+            try
+            {
+                switch (Check.Count)
+                {
+                    case 0:
+                        Tetrominos.Block.Next.Clear();
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[0] + 0 + (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[1] + 0 + (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[2] + 2 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[3] + 2 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[4] + 2 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[5] + 2 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[6] - 2 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[7] - 2 - (Program.Display.Width * 1));
+                        Check.Count++;
+                        break;
+
+                    case 1:
+                        Tetrominos.Block.Next.Clear();
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[0] + 0 + (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[1] + 0 + (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[2] + 2 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[3] + 2 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[4] - 2 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[5] - 2 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[6] - 2 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[7] - 2 + (Program.Display.Width * 1)); 
+                        Check.Count++;
+                        break;
+
+                    case 2:
+                        Tetrominos.Block.Next.Clear();
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[0] + 0 + (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[1] + 0 + (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[2] - 2 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[3] - 2 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[4] - 2 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[5] - 2 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[6] + 2 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[7] + 2 + (Program.Display.Width * 1));
+                        Check.Count++;
+                        break;
+
+                    case 3:
+                        Tetrominos.Block.Next.Clear();
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[0] + 0 + (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[1] + 0 + (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[2] - 2 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[3] - 2 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[4] + 2 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[5] + 2 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[6] + 2 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[7] + 2 - (Program.Display.Width * 1));
+                        Check.Count = 0;
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        public static void ZBlockRotate()
+        {
+            try
+            {
+                switch (Check.Count)
+                {
+                    case 0:
+                        Tetrominos.Block.Next.Clear();
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[0] + 0 + (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[1] + 0 + (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[2] + 0 - (Program.Display.Width * 2));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[3] + 0 - (Program.Display.Width * 2));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[4] + 2 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[5] + 2 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[6] + 2 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[7] + 2 - (Program.Display.Width * 1));
+                        Check.Count = 1;
+                        break;
+
+                    case 1:
+                        Tetrominos.Block.Next.Clear();
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[0] - 0 - (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[1] - 0 - (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[2] - 0 + (Program.Display.Width * 2));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[3] - 0 + (Program.Display.Width * 2));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[4] - 2 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[5] - 2 - (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[6] - 2 + (Program.Display.Width * 1));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[7] - 2 + (Program.Display.Width * 1));
                         Check.Count = 0;
                         break;
                 }

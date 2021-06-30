@@ -42,6 +42,7 @@ namespace Tetris
             {
                 Tetrominos.New();
                 Console.ForegroundColor = Display.Color;
+                Rotate.Check.Lock = false;
 
                 Tetrominos.Block.Current.Clear();
                 Tetrominos.Block.Current.AddRange(Tetrominos.Block.Next);
@@ -77,6 +78,7 @@ namespace Tetris
                 catch (Exception)
                 {
                     Rotate.Now();
+
                 }
 
                 for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
