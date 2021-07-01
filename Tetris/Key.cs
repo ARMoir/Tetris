@@ -44,12 +44,16 @@ namespace Tetris
 
                     case ConsoleKey.DownArrow:
                     case ConsoleKey.S:
-                        Program.Display.Speed = 10;
+                        Program.Display.Speed = 100;
                         break;
 
                     case ConsoleKey.RightArrow:
                     case ConsoleKey.D:
                         Move.Direction((int)Move.Check.Diretions.Right);
+                        break;
+
+                    case ConsoleKey.Spacebar:
+                        Program.Display.Speed = 1;
                         break;
 
                     case ConsoleKey.Delete:
