@@ -338,8 +338,8 @@ namespace Tetris
 
                     case 1:
                         Tetrominos.Block.Next.Clear();
-                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[0] - 0 - (Program.Display.Width * 0));
-                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[1] - 0 - (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[0] - 0 + (Program.Display.Width * 0));
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[1] - 0 + (Program.Display.Width * 0));
                         Tetrominos.Block.Next.Add(Tetrominos.Block.Current[2] - 0 + (Program.Display.Width * 2));
                         Tetrominos.Block.Next.Add(Tetrominos.Block.Current[3] - 0 + (Program.Display.Width * 2));
                         Tetrominos.Block.Next.Add(Tetrominos.Block.Current[4] - 2 - (Program.Display.Width * 1));

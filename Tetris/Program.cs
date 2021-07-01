@@ -20,7 +20,6 @@ namespace Tetris
             public static int Active { get; set; } = 0;
             public static int Position { get; set; } = 0;
             public static int Speed { get; set; } = 400;
-            public static bool Start { get; set; } = true;
         }
 
         static void Main(string[] args)
@@ -38,7 +37,7 @@ namespace Tetris
             //Start Thred to Read Keypress
             Task.Factory.StartNew(() => Key.Press());
 
-            while (true) 
+            while (!Tetrominos.Block.Placed.Contains(Display.Position)) 
             {
                 Tetrominos.New();
                 Console.ForegroundColor = Display.Color;
@@ -78,13 +77,12 @@ namespace Tetris
                 catch (Exception)
                 {
                     Rotate.Now();
-
                 }
 
-                for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
-                {
-                    Display.FrameChar[Tetrominos.Block.Placed[i]] = ((int)Display.Status.Placed).ToString();
-                }
+                Score.RowCheck();
+
+                
+
 
                 //Update Display
                 Display.DisplayFrame.Clear();
@@ -95,6 +93,8 @@ namespace Tetris
                 Display.DisplayFrame.Replace(((int)Display.Status.Active).ToString() + ((int)Display.Status.Active).ToString(), "[]");
                 Display.DisplayFrame.Replace(((int)Display.Status.Placed).ToString() + ((int)Display.Status.Placed).ToString(), "[]");
                 Console.Write(Display.DisplayFrame);
+                //Tetrominos.Block.Row.Sort();
+                //Console.WriteLine(String.Join(", ", Tetrominos.Block.Row));
                 System.Threading.Thread.Sleep(Display.Speed);
 
                 Display.FrameChar.Clear();
