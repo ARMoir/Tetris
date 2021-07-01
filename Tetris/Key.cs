@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Tetris
 {
@@ -20,7 +21,8 @@ namespace Tetris
 
         public static void Press()
         {
-            do
+
+            while (true) 
             {
                 var Key = Console.ReadKey().Key;
 
@@ -37,12 +39,7 @@ namespace Tetris
 
                     case ConsoleKey.LeftArrow:
                     case ConsoleKey.A:
-                        Tetrominos.Block.Next.Clear();
-
-                        for (var i = 0; i < Tetrominos.Block.Current.Count; i++)
-                        {
-                            Tetrominos.Block.Next.Add(Tetrominos.Block.Current[i] - 2);
-                        }
+                        Move.Direction((int)Move.Check.Diretions.Left);
                         break;
 
                     case ConsoleKey.DownArrow:
@@ -52,13 +49,7 @@ namespace Tetris
 
                     case ConsoleKey.RightArrow:
                     case ConsoleKey.D:
-
-                        Tetrominos.Block.Next.Clear();
-
-                        for (var i = 0; i < Tetrominos.Block.Current.Count; i++)
-                        {
-                            Tetrominos.Block.Next.Add(Tetrominos.Block.Current[i] + 2);
-                        }
+                        Move.Direction((int)Move.Check.Diretions.Right);
                         break;
 
                     case ConsoleKey.Delete:
@@ -66,6 +57,7 @@ namespace Tetris
                         //Reset.Now();
                         break;
 
+                    case ConsoleKey.Escape:
                     case ConsoleKey.Q:
                         Environment.Exit(-1);
                         break;
@@ -78,8 +70,7 @@ namespace Tetris
                         }
                         break;
                 }
-
-            } while (true);
+            } 
         }
     }
 }

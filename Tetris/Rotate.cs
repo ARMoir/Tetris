@@ -13,6 +13,7 @@ namespace Tetris
         {
             public static int Count { get; set; } = 0;
             public static bool Lock { get; set; } = false;
+            public static bool Move { get; set; } = false;
         }
 
         public static void Now()
