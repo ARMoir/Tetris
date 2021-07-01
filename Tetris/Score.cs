@@ -43,6 +43,22 @@ namespace Tetris
                             Tetrominos.Block.Placed.Clear();
                             Tetrominos.Block.Placed.AddRange(Row.Cleared);
                             Row.Cleared.Clear();
+
+                            for (var x = 0; x < 20; x++)
+                            {
+                                for (var j = 0; j < Tetrominos.Block.Placed.Count; j++)
+                                {
+                                    if (Row.Complete.Contains(Tetrominos.Block.Placed[j] + Program.Display.Width))
+                                    {
+                                        Tetrominos.Block.Placed[j] = Tetrominos.Block.Placed[j] + Program.Display.Width;
+                                    }
+                                }
+
+                                for (var j = 0; j < Row.Complete.Count; j++)
+                                {
+                                    Row.Complete[j] = Row.Complete[j] - Program.Display.Width;
+                                }
+                            }
                         }
                     }
                     else
@@ -51,7 +67,6 @@ namespace Tetris
                     }
                 }
             }
-
             Row.Complete.Clear();
         }
     }

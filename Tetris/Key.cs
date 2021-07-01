@@ -57,7 +57,6 @@ namespace Tetris
                         break;
 
                     case ConsoleKey.Delete:
-
                         //Reset.Now();
                         break;
 

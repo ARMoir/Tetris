@@ -47,10 +47,7 @@ namespace Tetris
                 Tetrominos.Block.Current.AddRange(Tetrominos.Block.Next);
                 Tetrominos.Block.Next.Clear();
 
-                for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
-                {
-                    Display.FrameChar[Tetrominos.Block.Placed[i]] = ((int)Display.Status.Placed).ToString();
-                }
+                Score.RowCheck();
 
                 try
                 {
@@ -80,9 +77,6 @@ namespace Tetris
                 }
 
                 Score.RowCheck();
-
-                
-
 
                 //Update Display
                 Display.DisplayFrame.Clear();
