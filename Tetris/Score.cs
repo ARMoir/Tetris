@@ -44,19 +44,19 @@ namespace Tetris
                             Tetrominos.Block.Placed.AddRange(Row.Cleared);
                             Row.Cleared.Clear();
 
-                            for (var x = 0; x < 20; x++)
+                            for (var j = 0; j < 20; j++)
                             {
-                                for (var j = 0; j < Tetrominos.Block.Placed.Count; j++)
+                                for (var k = 0; k < Tetrominos.Block.Placed.Count; k++)
                                 {
-                                    if (Row.Complete.Contains(Tetrominos.Block.Placed[j] + Program.Display.Width))
+                                    if (Row.Complete.Contains(Tetrominos.Block.Placed[k] + Program.Display.Width))
                                     {
-                                        Tetrominos.Block.Placed[j] = Tetrominos.Block.Placed[j] + Program.Display.Width;
+                                        Tetrominos.Block.Placed[k] = Tetrominos.Block.Placed[k] + Program.Display.Width;
                                     }
                                 }
 
-                                for (var j = 0; j < Row.Complete.Count; j++)
+                                for (var k = 0; k < Row.Complete.Count; k++)
                                 {
-                                    Row.Complete[j] = Row.Complete[j] - Program.Display.Width;
+                                    Row.Complete[k] = Row.Complete[k] - Program.Display.Width;
                                 }
                             }
                         }
