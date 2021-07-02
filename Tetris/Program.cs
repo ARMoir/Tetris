@@ -19,7 +19,7 @@ namespace Tetris
             public static int Width { get; set; } = 0;
             public static int Active { get; set; } = 0;
             public static int Position { get; set; } = 0;
-            public static int Speed { get; set; } = 400;
+            public static int Speed { get; set; } = 1000;
         }
 
         static void Main(string[] args)
@@ -93,7 +93,6 @@ namespace Tetris
 
                 Display.FrameChar.Clear();
                 Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
-
             } 
         }
     }
