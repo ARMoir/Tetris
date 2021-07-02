@@ -86,9 +86,9 @@ namespace Tetris
                 Console.SetCursorPosition(0, 0);
                 Display.DisplayFrame.Replace(((int)Display.Status.Active).ToString() + ((int)Display.Status.Active).ToString(), "[]");
                 Display.DisplayFrame.Replace(((int)Display.Status.Placed).ToString() + ((int)Display.Status.Placed).ToString(), "[]");
+                Display.DisplayFrame.Replace(((int)Display.Status.Active).ToString(), "[");
+
                 Console.Write(Display.DisplayFrame);
-                //Tetrominos.Block.Row.Sort();
-                //Console.WriteLine(String.Join(", ", Tetrominos.Block.Row));
                 System.Threading.Thread.Sleep(Display.Speed);
 
                 Display.FrameChar.Clear();
