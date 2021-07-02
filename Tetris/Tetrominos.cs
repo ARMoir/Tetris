@@ -28,11 +28,11 @@ namespace Tetris
                 switch (Block.Random.Next(7))
                 {
                     case (int)Block.Tetromino.IBlock:
-                        LBlock();
+                        IBlock();
                         break;
 
                     case (int)Block.Tetromino.JBlock:
-                        LBlock();
+                        JBlock();
                         break;
 
                     case (int)Block.Tetromino.LBlock:
@@ -40,19 +40,19 @@ namespace Tetris
                         break;
 
                     case (int)Block.Tetromino.OBlock:
-                        LBlock();
+                        OBlock();
                         break;
 
                     case (int)Block.Tetromino.SBlock:
-                        LBlock();
+                        SBlock();
                         break;
 
                     case (int)Block.Tetromino.TBlock:
-                        LBlock();
+                        TBlock();
                         break;
 
                     case (int)Block.Tetromino.ZBlock:
-                        LBlock();
+                        ZBlock();
                         break;
                 }
             }
