@@ -7,7 +7,7 @@ namespace Tetris
     {
         public static class Wall
         {
-            public static string[] Values { get; set; } = { "!", "=", ">", ((int)Program.Display.Status.Placed).ToString()};
+            public static string[] Values { get; set; } = { "!", "=", "*"};
         }
         public static void SetFrame()
         {

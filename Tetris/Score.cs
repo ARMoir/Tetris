@@ -12,15 +12,17 @@ namespace Tetris
         {
             public static List<int> Complete { get; set; } = new List<int>();
             public static List<int> Cleared { get; set; } = new List<int>();
+            public static int Count { get; set; } = 0;
         }
 
         public static void RowCheck()
         {
+            Program.Display.FrameChar[10] = Row.Count.ToString();
             Tetrominos.Block.Placed.Sort();
 
             for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
             {
-                Program.Display.FrameChar[Tetrominos.Block.Placed[i]] = ((int)Program.Display.Status.Placed).ToString();
+                Program.Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
 
                 if (i > 0)
                 {
@@ -39,6 +41,8 @@ namespace Tetris
 
                         if (Row.Complete.Count == 20)
                         {
+                            Row.Count++;
+                            
                             Row.Cleared.AddRange(Tetrominos.Block.Placed.Except(Row.Complete).ToList());
                             Tetrominos.Block.Placed.Clear();
                             Tetrominos.Block.Placed.AddRange(Row.Cleared);

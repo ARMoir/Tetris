@@ -14,12 +14,11 @@ namespace Tetris
             public static List<string> FrameChar { get; set; } = new List<string>();
             public static StringBuilder FrameString { get; set; } = new StringBuilder();
             public static StringBuilder DisplayFrame { get; set; } = new StringBuilder();
-            public enum Status { Active, Placed }
             public static ConsoleColor Color { get; set; } = ConsoleColor.Green;
             public static int Width { get; set; } = 0;
             public static int Active { get; set; } = 0;
             public static int Position { get; set; } = 0;
-            public static int Speed { get; set; } = 1000;
+            public static int Speed { get; set; } = 400;
         }
 
         static void Main(string[] args)
@@ -54,7 +53,7 @@ namespace Tetris
                     for (var i = 0; i < Tetrominos.Block.Current.Count; i++)
                     {
 
-                        Display.FrameChar[Tetrominos.Block.Current[i]] = ((int)(Display.Status.Active)).ToString();
+                        Display.FrameChar[Tetrominos.Block.Current[i]] = "#";
 
                         if (Frame.Wall.Values.Contains(Display.FrameChar[Tetrominos.Block.Current[i] + Display.Width]))
                         {
@@ -84,9 +83,9 @@ namespace Tetris
 
                 //Write Display to Console
                 Console.SetCursorPosition(0, 0);
-                Display.DisplayFrame.Replace(((int)Display.Status.Active).ToString() + ((int)Display.Status.Active).ToString(), "[]");
-                Display.DisplayFrame.Replace(((int)Display.Status.Placed).ToString() + ((int)Display.Status.Placed).ToString(), "[]");
-                Display.DisplayFrame.Replace(((int)Display.Status.Active).ToString(), "[");
+                Display.DisplayFrame.Replace("##", "[]");
+                Display.DisplayFrame.Replace("**", "[]");
+               //Display.DisplayFrame.Replace(((int)Display.Status.Active).ToString(), "[");
 
                 Console.Write(Display.DisplayFrame);
                 System.Threading.Thread.Sleep(Display.Speed);
