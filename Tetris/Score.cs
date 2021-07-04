@@ -22,7 +22,6 @@ namespace Tetris
 
             for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
             {
-                Program.Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
 
                 if (i > 0)
                 {

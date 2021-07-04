@@ -18,7 +18,7 @@ namespace Tetris
             public static int Width { get; set; } = 0;
             public static int Active { get; set; } = 0;
             public static int Position { get; set; } = 0;
-            public static int Speed { get; set; } = 400;
+            public static int Speed { get; set; } = 480;
         }
 
         static void Main(string[] args)
@@ -48,6 +48,11 @@ namespace Tetris
 
                 Score.RowCheck();
 
+                for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
+                {
+                    Program.Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
+                }
+
                 try
                 {
                     for (var i = 0; i < Tetrominos.Block.Current.Count; i++)
@@ -61,18 +66,22 @@ namespace Tetris
                             Tetrominos.Block.Current.Clear();
                             Tetrominos.Block.Next.Clear();
                             Tetrominos.Block.Set = true;
-                            Display.Speed = 400;
+                            Display.Speed = 480;
                         }
                         else
                         {
                             Tetrominos.Block.Next.Add(Tetrominos.Block.Current[i] + Display.Width);
                         }
-
                     }
                 }
                 catch (Exception)
                 {
                     Rotate.Now();
+                }
+
+                for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
+                {
+                    Program.Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
                 }
 
                 Score.RowCheck();
