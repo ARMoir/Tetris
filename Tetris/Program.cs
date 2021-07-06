@@ -85,6 +85,7 @@ namespace Tetris
                 }
 
                 Score.RowCheck();
+                Score.Rows();
 
                 //Update Display
                 Display.DisplayFrame.Clear();

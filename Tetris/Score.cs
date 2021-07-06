@@ -12,12 +12,17 @@ namespace Tetris
         {
             public static List<int> Complete { get; set; } = new List<int>();
             public static List<int> Cleared { get; set; } = new List<int>();
-            public static int Count { get; set; } = 0;
+        }
+
+        public static class ScoreBoard
+        {
+            public static List<string> RowChar { get; set; } = new List<string>();
+            public static int RowCount { get; set; } = 0;
         }
 
         public static void RowCheck()
         {
-            Program.Display.FrameChar[10] = Row.Count.ToString();
+            
             Tetrominos.Block.Placed.Sort();
 
             for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
@@ -40,7 +45,7 @@ namespace Tetris
 
                         if (Row.Complete.Count == 20)
                         {
-                            Row.Count++;
+                            ScoreBoard.RowCount++;
                             
                             Row.Cleared.AddRange(Tetrominos.Block.Placed.Except(Row.Complete).ToList());
                             Tetrominos.Block.Placed.Clear();
@@ -71,6 +76,17 @@ namespace Tetris
                 }
             }
             Row.Complete.Clear();
+        }
+
+        public static void Rows()
+        {
+            ScoreBoard.RowChar.Clear();
+            ScoreBoard.RowChar.AddRange(ScoreBoard.RowCount.ToString().Select(Chars => Chars.ToString()));
+
+            for (var i = 0; i < ScoreBoard.RowChar.Count; i++)
+            {
+                Program.Display.FrameChar[6 + i] = ScoreBoard.RowChar[i];
+            }
         }
     }
 }
