@@ -27,6 +27,7 @@ namespace Tetris
             Console.Clear();
             Frame.SetFrame();
             Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
+            Frame.PopWallValList();
 
             //Set the Values for Movement Calculations
             string[] Lines = Display.FrameString.ToString().Split((Char)10);

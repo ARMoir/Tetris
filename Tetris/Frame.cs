@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Tetris;
 
 namespace Tetris
@@ -8,6 +10,7 @@ namespace Tetris
         public static class Wall
         {
             public static string[] Values { get; set; } = { "!", "=", "*"};
+            public static List<int> ValList { get; set; } = new List<int>();
         }
         public static void SetFrame()
         {
@@ -40,5 +43,18 @@ namespace Tetris
                 Program.Display.FrameString.Append(line + (char)10);
             }
         }
+
+        public static void PopWallValList()
+        {
+            for (var i = 0; i < Program.Display.FrameChar.Count; i++)
+            {
+
+                if (Wall.Values.Contains(Program.Display.FrameChar[i]))
+                {
+                    Wall.ValList.Add(i);
+                }
+            }
+        }
     }
+
 }
