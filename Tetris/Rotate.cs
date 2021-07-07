@@ -54,6 +54,7 @@ namespace Tetris
         public static void WallCheck()
         {
             Check.Pass = true;
+            Frame.WallList();
 
             for (var i = 0; i < Check.Next.Count; i++)
             {

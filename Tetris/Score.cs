@@ -17,7 +17,9 @@ namespace Tetris
         public static class ScoreBoard
         {
             public static List<string> RowChar { get; set; } = new List<string>();
+            public static List<string> LevelChar { get; set; } = new List<string>();
             public static int RowCount { get; set; } = 0;
+            public static int Level { get; set; } = 1;
         }
 
         public static void RowCheck()
@@ -86,6 +88,18 @@ namespace Tetris
             for (var i = 0; i < ScoreBoard.RowChar.Count; i++)
             {
                 Program.Display.FrameChar[6 + i] = ScoreBoard.RowChar[i];
+            }
+        }
+
+        public static void Level()
+        {
+            ScoreBoard.Level = (ScoreBoard.RowCount / 5) + 1;
+            ScoreBoard.LevelChar.Clear();
+            ScoreBoard.LevelChar.AddRange(ScoreBoard.Level.ToString().Select(Chars => Chars.ToString()));
+
+            for (var i = 0; i < ScoreBoard.LevelChar.Count; i++)
+            {
+                Program.Display.FrameChar[152 + i] = ScoreBoard.LevelChar[i];
             }
         }
     }

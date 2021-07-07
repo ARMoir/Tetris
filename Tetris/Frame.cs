@@ -44,8 +44,10 @@ namespace Tetris
             }
         }
 
-        public static void PopWallValList()
+        public static void WallList()
         {
+            Wall.ValList.Clear();
+
             for (var i = 0; i < Program.Display.FrameChar.Count; i++)
             {
 

@@ -26,8 +26,7 @@ namespace Tetris
             Console.CursorVisible = false;
             Console.Clear();
             Frame.SetFrame();
-            Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
-            Frame.PopWallValList();
+            Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));          
 
             //Set the Values for Movement Calculations
             string[] Lines = Display.FrameString.ToString().Split((Char)10);
@@ -52,7 +51,7 @@ namespace Tetris
                 for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
                 {
                     Program.Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
-                }
+                }                
 
                 try
                 {
@@ -87,6 +86,7 @@ namespace Tetris
 
                 Score.RowCheck();
                 Score.Rows();
+                Score.Level();
 
                 //Update Display
                 Display.DisplayFrame.Clear();
@@ -96,7 +96,6 @@ namespace Tetris
                 Console.SetCursorPosition(0, 0);
                 Display.DisplayFrame.Replace("##", "[]");
                 Display.DisplayFrame.Replace("**", "[]");
-               //Display.DisplayFrame.Replace(((int)Display.Status.Active).ToString(), "[");
 
                 Console.Write(Display.DisplayFrame);
                 System.Threading.Thread.Sleep(Display.Speed);
