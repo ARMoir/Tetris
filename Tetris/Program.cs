@@ -18,7 +18,7 @@ namespace Tetris
             public static int Width { get; set; } = 0;
             public static int Active { get; set; } = 0;
             public static int Position { get; set; } = 0;
-            public static int Speed { get; set; } = 480;
+            //public static int Speed { get; set; } = 480;
         }
 
         static void Main(string[] args)
@@ -50,7 +50,7 @@ namespace Tetris
 
                 for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
                 {
-                    Program.Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
+                    Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
                 }                
 
                 try
@@ -62,11 +62,11 @@ namespace Tetris
 
                         if (Frame.Wall.Values.Contains(Display.FrameChar[Tetrominos.Block.Current[i] + Display.Width]))
                         {
+                            Speed.Check();
                             Tetrominos.Block.Placed.AddRange(Tetrominos.Block.Current);
                             Tetrominos.Block.Current.Clear();
                             Tetrominos.Block.Next.Clear();
                             Tetrominos.Block.Set = true;
-                            Display.Speed = 480;
                         }
                         else
                         {
@@ -76,12 +76,13 @@ namespace Tetris
                 }
                 catch (Exception)
                 {
+                    Rotate.Check.Lock = true;
                     Rotate.Now();
                 }
 
                 for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
                 {
-                    Program.Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
+                    Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
                 }
 
                 Score.RowCheck();
@@ -98,7 +99,7 @@ namespace Tetris
                 Display.DisplayFrame.Replace("**", "[]");
 
                 Console.Write(Display.DisplayFrame);
-                System.Threading.Thread.Sleep(Display.Speed);
+                System.Threading.Thread.Sleep(Speed.Set.Delay);
 
                 Display.FrameChar.Clear();
                 Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));

@@ -93,7 +93,7 @@ namespace Tetris
 
         public static void Level()
         {
-            ScoreBoard.Level = (ScoreBoard.RowCount / 5) + 1;
+            ScoreBoard.Level = (ScoreBoard.RowCount / 5);
             ScoreBoard.LevelChar.Clear();
             ScoreBoard.LevelChar.AddRange(ScoreBoard.Level.ToString().Select(Chars => Chars.ToString()));
 
