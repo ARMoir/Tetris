@@ -72,10 +72,13 @@ namespace Tetris
                         {
                             Speed.Check();
                             Speed.Set.Drop = false;
+                            
                             Tetrominos.Block.Placed.AddRange(Tetrominos.Block.Current);
                             Tetrominos.Block.Current.Clear();
                             Tetrominos.Block.Next.Clear();
                             Tetrominos.Block.Set = true;
+
+                            Score.ScoreBoard.Level = (Score.ScoreBoard.RowCount / 5);
                         }
                         else
                         {
@@ -85,6 +88,7 @@ namespace Tetris
                 }
                 catch (Exception)
                 {
+                    Rotate.Check.Lock = true;
                     Rotate.Now();
                     Rotate.Check.Lock = true;
                 }
@@ -99,21 +103,14 @@ namespace Tetris
                     Score.ScoreBoard.Score++;
                 }
 
-                if (Speed.Set.Paused)
+                while (Speed.Set.Paused)
                 {
-                    while (true)
-                    {
-                        if (!Speed.Set.Paused)
-                        {
-                            break;
-                        }
-                    }
                 }
 
                 Score.RowCheck();
-                Score.PopRows();
-                Score.PopLevel();
-                Score.PopScore();
+                Score.PopScoreBord(Score.ScoreBoard.RowCount, 6);
+                Score.PopScoreBord(Score.ScoreBoard.Score, 79);
+                Score.PopScoreBord(Score.ScoreBoard.Level, 152);
 
                 //Update Display
                 Display.DisplayFrame.Clear();
