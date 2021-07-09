@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,9 +17,9 @@ namespace Tetris
             public static StringBuilder DisplayFrame { get; set; } = new StringBuilder();
             public static ConsoleColor Color { get; set; } = ConsoleColor.Green;
             public static int Width { get; set; } = 0;
+            public static int Hight { get; set; } = 0;
             public static int Active { get; set; } = 0;
             public static int Position { get; set; } = 0;
-            //public static int Speed { get; set; } = 480;
         }
 
         static void Main(string[] args)
@@ -30,8 +31,15 @@ namespace Tetris
 
             //Set the Values for Movement Calculations
             string[] Lines = Display.FrameString.ToString().Split((Char)10);
+            Display.Hight = Lines.Length;
             Display.Width = Lines[0].Length + 1;
             Display.Position = (Display.Width / 2);
+
+            //Can only set Window Size in Windows
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Console.SetWindowSize(Display.Width, Display.Hight);
+            }
 
             //Start Thred to Read Keypress
             Task.Factory.StartNew(() => Key.Press());
@@ -63,6 +71,7 @@ namespace Tetris
                         if (Frame.Wall.Values.Contains(Display.FrameChar[Tetrominos.Block.Current[i] + Display.Width]))
                         {
                             Speed.Check();
+                            Speed.Set.Drop = false;
                             Tetrominos.Block.Placed.AddRange(Tetrominos.Block.Current);
                             Tetrominos.Block.Current.Clear();
                             Tetrominos.Block.Next.Clear();
@@ -76,8 +85,8 @@ namespace Tetris
                 }
                 catch (Exception)
                 {
-                    Rotate.Check.Lock = true;
                     Rotate.Now();
+                    Rotate.Check.Lock = true;
                 }
 
                 for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
@@ -85,9 +94,26 @@ namespace Tetris
                     Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
                 }
 
+                if(Speed.Set.Drop)
+                {
+                    Score.ScoreBoard.Score++;
+                }
+
+                if (Speed.Set.Paused)
+                {
+                    while (true)
+                    {
+                        if (!Speed.Set.Paused)
+                        {
+                            break;
+                        }
+                    }
+                }
+
                 Score.RowCheck();
-                Score.Rows();
-                Score.Level();
+                Score.PopRows();
+                Score.PopLevel();
+                Score.PopScore();
 
                 //Update Display
                 Display.DisplayFrame.Clear();

@@ -45,6 +45,7 @@ namespace Tetris
                     case ConsoleKey.DownArrow:
                     case ConsoleKey.S:
                         Speed.Set.Delay /= 5;
+                        Speed.Set.Drop = true;
                         break;
 
                     case ConsoleKey.RightArrow:
@@ -54,10 +55,11 @@ namespace Tetris
 
                     case ConsoleKey.Spacebar:
                         Speed.Set.Delay = 1;
+                        Speed.Set.Drop = true;
                         break;
 
-                    case ConsoleKey.Delete:
-                        //Reset.Now();
+                    case ConsoleKey.P:
+                        Speed.Pause();
                         break;
 
                     case ConsoleKey.Escape:

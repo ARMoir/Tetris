@@ -18,8 +18,10 @@ namespace Tetris
         {
             public static List<string> RowChar { get; set; } = new List<string>();
             public static List<string> LevelChar { get; set; } = new List<string>();
+            public static List<string> ScoreChar { get; set; } = new List<string>();
             public static int RowCount { get; set; } = 0;
             public static int Level { get; set; } = 1;
+            public static int Score { get; set; } = 0;
         }
 
         public static void RowCheck()
@@ -80,7 +82,7 @@ namespace Tetris
             Row.Complete.Clear();
         }
 
-        public static void Rows()
+        public static void PopRows()
         {
             ScoreBoard.RowChar.Clear();
             ScoreBoard.RowChar.AddRange(ScoreBoard.RowCount.ToString().Select(Chars => Chars.ToString()));
@@ -91,7 +93,7 @@ namespace Tetris
             }
         }
 
-        public static void Level()
+        public static void PopLevel()
         {
             ScoreBoard.Level = (ScoreBoard.RowCount / 5);
             ScoreBoard.LevelChar.Clear();
@@ -100,6 +102,17 @@ namespace Tetris
             for (var i = 0; i < ScoreBoard.LevelChar.Count; i++)
             {
                 Program.Display.FrameChar[152 + i] = ScoreBoard.LevelChar[i];
+            }
+        }
+
+        public static void PopScore()
+        {
+            ScoreBoard.ScoreChar.Clear();
+            ScoreBoard.ScoreChar.AddRange(ScoreBoard.Score.ToString().Select(Chars => Chars.ToString()));
+
+            for (var i = 0; i < ScoreBoard.ScoreChar.Count; i++)
+            {
+                Program.Display.FrameChar[79 + i] = ScoreBoard.ScoreChar[i];
             }
         }
     }
