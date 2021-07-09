@@ -54,8 +54,6 @@ namespace Tetris
                 Tetrominos.Block.Current.AddRange(Tetrominos.Block.Next);
                 Tetrominos.Block.Next.Clear();
 
-                Score.RowCheck();
-
                 for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
                 {
                     Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
@@ -77,8 +75,6 @@ namespace Tetris
                             Tetrominos.Block.Current.Clear();
                             Tetrominos.Block.Next.Clear();
                             Tetrominos.Block.Set = true;
-
-                            Score.ScoreBoard.Level = (Score.ScoreBoard.RowCount / 5);
                         }
                         else
                         {
@@ -107,10 +103,12 @@ namespace Tetris
                 {
                 }
 
-                Score.RowCheck();
-                Score.PopScoreBord(Score.ScoreBoard.RowCount, 6);
-                Score.PopScoreBord(Score.ScoreBoard.Score, 79);
-                Score.PopScoreBord(Score.ScoreBoard.Level, 152);
+                Score.RowScore();
+                Score.PopScoreBoard(Score.ScoreBoard.Rows, 6);
+                Score.PopScoreBoard(Score.ScoreBoard.Score, 79);
+                Score.PopScoreBoard(Score.ScoreBoard.Level, 152);
+
+
 
                 //Update Display
                 Display.DisplayFrame.Clear();
