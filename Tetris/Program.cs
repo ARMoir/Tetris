@@ -58,36 +58,27 @@ namespace Tetris
                 for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
                 {
                     Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
-                }                
-
-                try
-                {
-                    for (var i = 0; i < Tetrominos.Block.Current.Count; i++)
-                    {
-
-                        Display.FrameChar[Tetrominos.Block.Current[i]] = "#";
-
-                        if (Frame.Wall.Values.Contains(Display.FrameChar[Tetrominos.Block.Current[i] + Display.Width]))
-                        {
-                            Speed.Check();
-                            Speed.Set.Drop = false;
-                            
-                            Tetrominos.Block.Placed.AddRange(Tetrominos.Block.Current);
-                            Tetrominos.Block.Current.Clear();
-                            Tetrominos.Block.Next.Clear();
-                            Tetrominos.Block.Set = true;
-                        }
-                        else
-                        {
-                            Tetrominos.Block.Next.Add(Tetrominos.Block.Current[i] + Display.Width);
-                        }
-                    }
                 }
-                catch (Exception)
+
+                for (var i = 0; i < Tetrominos.Block.Current.Count; i++)
                 {
-                    Rotate.Check.Lock = true;
-                    Rotate.Now();
-                    Rotate.Check.Lock = true;
+
+                    Display.FrameChar[Tetrominos.Block.Current[i]] = "#";
+
+                    if (Frame.Wall.Values.Contains(Display.FrameChar[Tetrominos.Block.Current[i] + Display.Width]))
+                    {
+                        Speed.Check();
+                        Speed.Set.Drop = false;
+
+                        Tetrominos.Block.Placed.AddRange(Tetrominos.Block.Current);
+                        Tetrominos.Block.Current.Clear();
+                        Tetrominos.Block.Next.Clear();
+                        Tetrominos.Block.Set = true;
+                    }
+                    else
+                    {
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[i] + Display.Width);
+                    }
                 }
 
                 for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
@@ -102,6 +93,7 @@ namespace Tetris
 
                 while (Speed.Set.Paused)
                 {
+                    //Game Paused
                 }
 
                 Score.RowScore();

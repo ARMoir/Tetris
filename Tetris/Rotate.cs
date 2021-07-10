@@ -58,7 +58,7 @@ namespace Tetris
 
             for (var i = 0; i < Check.Next.Count; i++)
             {
-                if (Frame.Wall.ValList.Contains(Check.Next[i]))
+                if (Frame.Wall.ValList.Contains(Check.Next[i]) || Check.Next[i] < 0)
                 {
                     Check.Pass = false;
                 }
