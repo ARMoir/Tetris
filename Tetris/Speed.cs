@@ -29,8 +29,7 @@ namespace Tetris
                 Set.Paused = false;
             }
             else
-            {
-                
+            {             
                 Set.Paused = true;
             }   
         }

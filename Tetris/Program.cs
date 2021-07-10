@@ -46,6 +46,7 @@ namespace Tetris
 
             while (!Tetrominos.Block.Placed.Contains(Display.Position)) 
             {
+                Preview.Tetromino();
                 Tetrominos.New();
                 Console.ForegroundColor = Display.Color;
                 Rotate.Check.Lock = false;

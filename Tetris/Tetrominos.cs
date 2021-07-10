@@ -22,10 +22,10 @@ namespace Tetris
         {
             if(Block.Set)
             {
-                Block.Set = false;
+                Block.Set = false;          
                 Rotate.Check.Count = 0;
 
-                switch (Block.Random.Next(7))
+                switch (Preview.Next.Tetromino)
                 {
                     case (int)Block.Tetromino.IBlock:
                         IBlock();
@@ -55,6 +55,8 @@ namespace Tetris
                         ZBlock();
                         break;
                 }
+
+                Preview.Next.Tetromino = -1;
             }
         }
 
