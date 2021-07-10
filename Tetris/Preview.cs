@@ -28,31 +28,31 @@ namespace Tetris
             switch (Next.Tetromino)
             {
                 case (int)Tetrominos.Block.Tetromino.IBlock:
-                    PIBlock();
+                    Tetrominos.IBlock(Next.Draw, Next.Position, Program.Display.Width);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.JBlock:
-                    PJBlock();
+                    Tetrominos.JBlock(Next.Draw, Next.Position, Program.Display.Width);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.LBlock:
-                    PLBlock();
+                    Tetrominos.LBlock(Next.Draw, Next.Position, Program.Display.Width);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.OBlock:
-                    POBlock();
+                    Tetrominos.OBlock(Next.Draw, Next.Position, Program.Display.Width);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.SBlock:
-                    PSBlock();
+                    Tetrominos.SBlock(Next.Draw, Next.Position, Program.Display.Width);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.TBlock:
-                    PTBlock();
+                    Tetrominos.TBlock(Next.Draw, Next.Position, Program.Display.Width);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.ZBlock:
-                    PZBlock();
+                    Tetrominos.ZBlock(Next.Draw, Next.Position, Program.Display.Width);
                     break;
             }
 
@@ -60,92 +60,6 @@ namespace Tetris
             {
                 Program.Display.FrameChar[Next.Draw[i]] = "#";
             }
-        }
-
-        public static void PIBlock()
-        {
-            Next.Draw.Add(Next.Position - 4 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position - 3 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position - 2 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position - 1 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 0 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 1 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 2 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 3 + (Program.Display.Width * 0));
-
-        }
-
-        public static void PJBlock()
-        {
-            Next.Draw.Add(Next.Position - 2 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position - 1 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 0 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 1 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 2 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 3 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 2 + (Program.Display.Width * 1));
-            Next.Draw.Add(Next.Position + 3 + (Program.Display.Width * 1));
-        }
-
-        public static void PLBlock()
-        {
-            Next.Draw.Add(Next.Position - 2 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position - 1 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 0 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 1 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 2 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 3 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position - 1 + (Program.Display.Width * 1));
-            Next.Draw.Add(Next.Position - 2 + (Program.Display.Width * 1));
-        }
-
-        public static void POBlock()
-        {
-            Next.Draw.Add(Next.Position + 0 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 1 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position - 1 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position - 2 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position - 2 + (Program.Display.Width * 1));
-            Next.Draw.Add(Next.Position - 1 + (Program.Display.Width * 1));
-            Next.Draw.Add(Next.Position + 1 + (Program.Display.Width * 1));
-            Next.Draw.Add(Next.Position + 0 + (Program.Display.Width * 1));
-        }
-
-        public static void PSBlock()
-        {
-            Next.Draw.Add(Next.Position + 0 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 1 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 2 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 3 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position - 1 + (Program.Display.Width * 1));
-            Next.Draw.Add(Next.Position - 2 + (Program.Display.Width * 1));
-            Next.Draw.Add(Next.Position + 0 + (Program.Display.Width * 1));
-            Next.Draw.Add(Next.Position + 1 + (Program.Display.Width * 1));
-
-        }
-
-        public static void PTBlock()
-        {
-            Next.Draw.Add(Next.Position + 0 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 1 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position - 1 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position - 2 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 0 + (Program.Display.Width * 1));
-            Next.Draw.Add(Next.Position + 1 + (Program.Display.Width * 1));
-            Next.Draw.Add(Next.Position + 2 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 3 + (Program.Display.Width * 0));
-        }
-
-        public static void PZBlock()
-        {
-            Next.Draw.Add(Next.Position + 0 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 1 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 2 + (Program.Display.Width * 1));
-            Next.Draw.Add(Next.Position + 3 + (Program.Display.Width * 1));
-            Next.Draw.Add(Next.Position - 1 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position - 2 + (Program.Display.Width * 0));
-            Next.Draw.Add(Next.Position + 0 + (Program.Display.Width * 1));
-            Next.Draw.Add(Next.Position + 1 + (Program.Display.Width * 1));
         }
     }
 }
