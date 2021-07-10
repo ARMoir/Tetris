@@ -46,12 +46,16 @@ namespace Tetris
 
                     if (Row.Complete.Count == 20)
                     {
-                        Row.Counting++;
+                        
                         ScoreBoard.Rows++;
                         ScoreBoard.Level = (ScoreBoard.Rows / 5);
+
+                        Row.Counting++;
                         Row.Cleared.AddRange(Tetrominos.Block.Placed.Except(Row.Complete).ToList());
+
                         Tetrominos.Block.Placed.Clear();
                         Tetrominos.Block.Placed.AddRange(Row.Cleared);
+
                         Row.Cleared.Clear();
 
                         for (var j = 0; j < Program.Display.Hight; j++)

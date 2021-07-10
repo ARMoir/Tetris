@@ -108,8 +108,6 @@ namespace Tetris
                 Score.PopScoreBoard(Score.ScoreBoard.Score, 79);
                 Score.PopScoreBoard(Score.ScoreBoard.Level, 152);
 
-
-
                 //Update Display
                 Display.DisplayFrame.Clear();
                 Display.FrameChar.ForEach(Item => Display.DisplayFrame.Append(Item));
