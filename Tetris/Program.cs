@@ -53,7 +53,7 @@ namespace Tetris
             {
                //Show the intro Screen 
             }
-
+            Console.Clear();
             Speed.Check();
 
             while (!Tetrominos.Block.Placed.Contains(Display.Position)) 
