@@ -17,7 +17,7 @@ namespace Tetris
 
         public static void Check()
         {
-            Set.Delay = 480 - (Score.ScoreBoard.Rows * 10);
+            Set.Delay = 480 - (Score.ScoreBoard.Level * 45);
         }
 
         public static void Pause()

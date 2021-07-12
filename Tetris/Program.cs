@@ -13,6 +13,7 @@ namespace Tetris
         public static class Display
         {
             public static List<string> FrameChar { get; set; } = new List<string>();
+            public static StringBuilder Intro { get; set; } = new StringBuilder();
             public static StringBuilder FrameString { get; set; } = new StringBuilder();
             public static StringBuilder DisplayFrame { get; set; } = new StringBuilder();
             public static ConsoleColor Color { get; set; } = ConsoleColor.Green;
@@ -38,11 +39,22 @@ namespace Tetris
             //Can only set Window Size in Windows
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Console.SetWindowSize(Display.Width, Display.Hight);
+                //Console.SetWindowSize(Display.Width, Display.Hight);
             }
 
             //Start Thred to Read Keypress
             Task.Factory.StartNew(() => Key.Press());
+
+            Console.ForegroundColor = Display.Color;
+            Frame.SetIntro();
+            Console.Write(Display.Intro);      
+
+            while (Frame.Wall.Intro)
+            {
+               //Show the intro Screen 
+            }
+
+            Speed.Check();
 
             while (!Tetrominos.Block.Placed.Contains(Display.Position)) 
             {
@@ -115,7 +127,10 @@ namespace Tetris
 
                 Display.FrameChar.Clear();
                 Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
-            } 
+            }
+
+            Reset.Now();
+            Main(args);
         }
     }
 }

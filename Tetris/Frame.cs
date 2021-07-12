@@ -11,7 +11,42 @@ namespace Tetris
         {
             public static string[] Values { get; set; } = { "!", "=", "*"};
             public static List<int> ValList { get; set; } = new List<int>();
+            public static bool Intro { get; set; } = true;
         }
+
+        public static void SetIntro()
+        {
+            foreach (string line in new string[]
+            {
+                
+                @"                                                                        ",
+                @"                                                                        ",
+                @"                                                                        ",
+                @"                                                                        ",
+                @"                              [ ]                                       ",
+                @"                              T E T R I S                               ",
+                @"                                       [ ]                              ",
+                @"                                                                        ",
+                @"                                                                        ",
+                @"                                                                        ",
+                @"                                                                        ",
+                @"                                                                        ",
+                @"                                                                        ",
+                @"                                                                        ",
+                @"                                                                        ",
+                @"                                                                        ",
+                @"                                                                        ",
+                @"                           Select Level (0-9)                           ",
+                @"                                                                        ",
+                @"                                                                        ",
+                @"                                                                        ",               
+                @"                                                                        ",
+            })
+            {
+                Program.Display.Intro.Append(line + (char)10);
+            }
+        }
+
         public static void SetFrame()
         {
             foreach (string line in new string[]

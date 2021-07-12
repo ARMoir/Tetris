@@ -67,6 +67,56 @@ namespace Tetris
                         Environment.Exit(-1);
                         break;
 
+                    case ConsoleKey.D0:
+                        Frame.Wall.Intro = false;
+                        Score.ScoreBoard.Level = 0;
+                        break;
+
+                    case ConsoleKey.D1:
+                        Frame.Wall.Intro = false;
+                        Score.ScoreBoard.Level = 1;
+                        break;
+
+                    case ConsoleKey.D2:
+                        Frame.Wall.Intro = false;
+                        Score.ScoreBoard.Level = 2;
+                        break;
+
+                    case ConsoleKey.D3:
+                        Frame.Wall.Intro = false;
+                        Score.ScoreBoard.Level = 3;
+                        break;
+
+                    case ConsoleKey.D4:
+                        Frame.Wall.Intro = false;
+                        Score.ScoreBoard.Level = 4;
+                        break;
+
+                    case ConsoleKey.D5:
+                        Frame.Wall.Intro = false;
+                        Score.ScoreBoard.Level = 5;
+                        break;
+
+                    case ConsoleKey.D6:
+                        Frame.Wall.Intro = false;
+                        Score.ScoreBoard.Level = 6;
+                        break;
+
+                    case ConsoleKey.D7:
+                        Frame.Wall.Intro = false;
+                        Score.ScoreBoard.Level = 7;
+                        break;
+
+                    case ConsoleKey.D8:
+                        Frame.Wall.Intro = false;
+                        Score.ScoreBoard.Level = 8;
+                        break;
+
+                    case ConsoleKey.D9:
+                        Frame.Wall.Intro = false;
+                        Score.ScoreBoard.Level = 9;
+                        break;
+
                     default:
                         if (colorKeys.ContainsKey(Key))
                         {

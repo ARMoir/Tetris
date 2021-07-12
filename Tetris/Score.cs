@@ -48,7 +48,12 @@ namespace Tetris
                     {
                         
                         ScoreBoard.Rows++;
-                        ScoreBoard.Level = (ScoreBoard.Rows / 5);
+
+                        if ((ScoreBoard.Rows / 5) > ScoreBoard.Level)
+                        {
+                            ScoreBoard.Level = (ScoreBoard.Rows / 5);
+
+                        }
 
                         Row.Counting++;
                         Row.Cleared.AddRange(Tetrominos.Block.Placed.Except(Row.Complete).ToList());
