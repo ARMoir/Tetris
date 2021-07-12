@@ -39,7 +39,7 @@ namespace Tetris
             //Can only set Window Size in Windows
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                //Console.SetWindowSize(Display.Width, Display.Hight);
+                Console.SetWindowSize(Display.Width, Display.Hight);
             }
 
             //Start Thred to Read Keypress
