@@ -15,7 +15,6 @@ namespace Tetris
             public static List<int> Placed { get; set; } = new List<int>();
             public static bool Set { get; set; } = true;
             public enum Tetromino { IBlock, JBlock, LBlock, OBlock, SBlock, TBlock, ZBlock }
-            public static Random Random { get; set; } = new Random();
         }
 
         public static void New()

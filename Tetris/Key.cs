@@ -39,7 +39,11 @@ namespace Tetris
 
                     case ConsoleKey.LeftArrow:
                     case ConsoleKey.A:
-                        Move.Direction((int)Move.Check.Diretions.Left);
+                        if (!Rotate.Check.Lock)
+                        {
+                            Move.Direction((int)Move.Check.Diretions.Left);
+                            Rotate.Check.Lock = true;
+                        }
                         break;
 
                     case ConsoleKey.DownArrow:
@@ -50,7 +54,11 @@ namespace Tetris
 
                     case ConsoleKey.RightArrow:
                     case ConsoleKey.D:
-                        Move.Direction((int)Move.Check.Diretions.Right);
+                        if (!Rotate.Check.Lock)
+                        {
+                            Move.Direction((int)Move.Check.Diretions.Right);
+                            Rotate.Check.Lock = true;
+                        }
                         break;
 
                     case ConsoleKey.Spacebar:
