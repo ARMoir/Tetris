@@ -51,7 +51,8 @@ namespace Tetris
 
             while (Frame.Wall.Intro)
             {
-               //Show the intro Screen 
+                //Show the intro Screen 
+                System.Threading.Thread.Sleep(Speed.Set.Delay);
             }
             Console.Clear();
             Speed.Check();
@@ -106,6 +107,7 @@ namespace Tetris
                 while (Speed.Set.Paused)
                 {
                     //Game Paused
+                    System.Threading.Thread.Sleep(Speed.Set.Delay);
                 }
 
                 Score.RowScore();
