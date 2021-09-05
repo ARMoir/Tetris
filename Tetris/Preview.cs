@@ -28,31 +28,31 @@ namespace Tetris
             switch (Next.Tetromino)
             {
                 case (int)Tetrominos.Block.Tetromino.IBlock:
-                    Tetrominos.IBlock(Next.Draw, Next.Position, Program.Display.Width);
+                    Tetrominos.IBlock(Next.Draw, Next.Position);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.JBlock:
-                    Tetrominos.JBlock(Next.Draw, Next.Position, Program.Display.Width);
+                    Tetrominos.JBlock(Next.Draw, Next.Position);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.LBlock:
-                    Tetrominos.LBlock(Next.Draw, Next.Position, Program.Display.Width);
+                    Tetrominos.LBlock(Next.Draw, Next.Position);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.OBlock:
-                    Tetrominos.OBlock(Next.Draw, Next.Position, Program.Display.Width);
+                    Tetrominos.OBlock(Next.Draw, Next.Position);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.SBlock:
-                    Tetrominos.SBlock(Next.Draw, Next.Position, Program.Display.Width);
+                    Tetrominos.SBlock(Next.Draw, Next.Position);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.TBlock:
-                    Tetrominos.TBlock(Next.Draw, Next.Position, Program.Display.Width);
+                    Tetrominos.TBlock(Next.Draw, Next.Position);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.ZBlock:
-                    Tetrominos.ZBlock(Next.Draw, Next.Position, Program.Display.Width);
+                    Tetrominos.ZBlock(Next.Draw, Next.Position);
                     break;
             }
 

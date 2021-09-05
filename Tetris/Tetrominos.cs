@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,37 +29,37 @@ namespace Tetris
                 {
                     case (int)Block.Tetromino.IBlock:
                         Program.Display.Active = (int)Block.Tetromino.IBlock;
-                        IBlock(Block.Next, Program.Display.Position, Program.Display.Width);
+                        IBlock(Block.Next, Program.Display.Position);
                         break;
 
                     case (int)Block.Tetromino.JBlock:
                         Program.Display.Active = (int)Block.Tetromino.JBlock;
-                        JBlock(Block.Next, Program.Display.Position, Program.Display.Width);
+                        JBlock(Block.Next, Program.Display.Position);
                         break;
 
                     case (int)Block.Tetromino.LBlock:
                         Program.Display.Active = (int)Block.Tetromino.LBlock;
-                        LBlock(Block.Next, Program.Display.Position, Program.Display.Width);
+                        LBlock(Block.Next, Program.Display.Position);
                         break;
 
                     case (int)Block.Tetromino.OBlock:
                         Program.Display.Active = (int)Block.Tetromino.OBlock;
-                        OBlock(Block.Next, Program.Display.Position, Program.Display.Width);
+                        OBlock(Block.Next, Program.Display.Position);
                         break;
 
                     case (int)Block.Tetromino.SBlock:
                         Program.Display.Active = (int)Block.Tetromino.SBlock;
-                        SBlock(Block.Next, Program.Display.Position, Program.Display.Width);
+                        SBlock(Block.Next, Program.Display.Position);
                         break;
 
                     case (int)Block.Tetromino.TBlock:
                         Program.Display.Active = (int)Block.Tetromino.TBlock;
-                        TBlock(Block.Next, Program.Display.Position, Program.Display.Width);
+                        TBlock(Block.Next, Program.Display.Position);
                         break;
 
                     case (int)Block.Tetromino.ZBlock:
                         Program.Display.Active = (int)Block.Tetromino.ZBlock;
-                        ZBlock(Block.Next, Program.Display.Position, Program.Display.Width);
+                        ZBlock(Block.Next, Program.Display.Position);
                         break;
                 }
 
@@ -66,90 +67,61 @@ namespace Tetris
             }
         }
 
-        public static void IBlock(List<int> New, int Position, int Width)
+        public static void NewBlock(List<int> New, int Position, int[] X, int[] Y)
         {
-            New.Add(Position - 4 + (Width * 0));
-            New.Add(Position - 3 + (Width * 0));
-            New.Add(Position - 2 + (Width * 0));
-            New.Add(Position - 1 + (Width * 0));
-            New.Add(Position + 0 + (Width * 0));
-            New.Add(Position + 1 + (Width * 0));
-            New.Add(Position + 2 + (Width * 0));
-            New.Add(Position + 3 + (Width * 0));
-
+            for (int i = 0; i < X.Length; i++)
+            {
+                New.Add(Position + X[i] + (Program.Display.Width * Y[i]));
+            }
         }
 
-        public static void JBlock(List<int> New, int Position, int Width)
+        public static void IBlock(List<int> New, int Position)
         {
-            New.Add(Position - 2 + (Width * 0));
-            New.Add(Position - 1 + (Width * 0));
-            New.Add(Position + 0 + (Width * 0));
-            New.Add(Position + 1 + (Width * 0));
-            New.Add(Position + 2 + (Width * 0));
-            New.Add(Position + 3 + (Width * 0));
-            New.Add(Position + 2 + (Width * 1));
-            New.Add(Position + 3 + (Width * 1));
+            int[] X = new int[8] { -4, -3, -2, -1, 0, 1, 2, 3 };
+            int[] Y = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
+            NewBlock(New, Position, X, Y);
         }
 
-        public static void LBlock(List<int> New, int Position, int Width)
+        public static void JBlock(List<int> New, int Position)
         {
-            New.Add(Position - 2 + (Width * 0));
-            New.Add(Position - 1 + (Width * 0));
-            New.Add(Position + 0 + (Width * 0));
-            New.Add(Position + 1 + (Width * 0));
-            New.Add(Position + 2 + (Width * 0));
-            New.Add(Position + 3 + (Width * 0));
-            New.Add(Position - 1 + (Width * 1));
-            New.Add(Position - 2 + (Width * 1));
+            int[] X = new int[8] { -2, -1, 0, 1, 2, 3, 2, 3 };
+            int[] Y = new int[8] { 0, 0, 0, 0, 0, 0, 1, 1 };
+            NewBlock(New, Position, X, Y);
         }
 
-        public static void OBlock(List<int> New, int Position, int Width)
+        public static void LBlock(List<int> New, int Position)
         {
-            New.Add(Position + 0 + (Width * 0));
-            New.Add(Position + 1 + (Width * 0));
-            New.Add(Position - 1 + (Width * 0));
-            New.Add(Position - 2 + (Width * 0));
-            New.Add(Position - 2 + (Width * 1));
-            New.Add(Position - 1 + (Width * 1));
-            New.Add(Position + 1 + (Width * 1));
-            New.Add(Position + 0 + (Width * 1));
+            int[] X = new int[8] { -2, -1, 0, 1, 2, 3, -1, -2 };
+            int[] Y = new int[8] { 0, 0, 0, 0, 0, 0, 1, 1 };
+            NewBlock(New, Position, X, Y);
         }
 
-        public static void SBlock(List<int> New, int Position, int Width)
+        public static void OBlock(List<int> New, int Position)
         {
-            New.Add(Position + 0 + (Width * 0));
-            New.Add(Position + 1 + (Width * 0));
-            New.Add(Position + 2 + (Width * 0));
-            New.Add(Position + 3 + (Width * 0));
-            New.Add(Position - 1 + (Width * 1));
-            New.Add(Position - 2 + (Width * 1));
-            New.Add(Position + 0 + (Width * 1));
-            New.Add(Position + 1 + (Width * 1));
-
+            int[] X = new int[8] { 0, 1, -1, -2, -2, -1, 1, 0 };
+            int[] Y = new int[8] { 0, 0, 0, 0, 1, 1, 1, 1 };
+            NewBlock(New, Position, X, Y);
         }
 
-        public static void TBlock(List<int> New, int Position, int Width)
+        public static void SBlock(List<int> New, int Position)
         {
-            New.Add(Position + 0 + (Width * 0));
-            New.Add(Position + 1 + (Width * 0));
-            New.Add(Position - 1 + (Width * 0));
-            New.Add(Position - 2 + (Width * 0));
-            New.Add(Position + 0 + (Width * 1));
-            New.Add(Position + 1 + (Width * 1));
-            New.Add(Position + 2 + (Width * 0));
-            New.Add(Position + 3 + (Width * 0));
+            int[] X = new int[8] { 0, 1, 2, 3, -1, -2, 0, 1 };
+            int[] Y = new int[8] { 0, 0, 0, 0, 1, 1, 1, 1 };
+            NewBlock(New, Position, X, Y);
         }
 
-        public static void ZBlock(List<int> New, int Position, int Width)
+        public static void TBlock(List<int> New, int Position)
         {
-            New.Add(Position + 0 + (Width * 0));
-            New.Add(Position + 1 + (Width * 0));
-            New.Add(Position + 2 + (Width * 1));
-            New.Add(Position + 3 + (Width * 1));
-            New.Add(Position - 1 + (Width * 0));
-            New.Add(Position - 2 + (Width * 0));
-            New.Add(Position + 0 + (Width * 1));
-            New.Add(Position + 1 + (Width * 1));
+            int[] X = new int[8] { 0, 1, -1, -2, 0, 1, 2, 3 };
+            int[] Y = new int[8] { 0, 0, 0, 0, 1, 1, 0, 0 };
+            NewBlock(New, Position, X, Y);
+        }
+
+        public static void ZBlock(List<int> New, int Position)
+        {
+            int[] X = new int[8] { 0, 1, 2, 3, -1, -2, 0, 1 };
+            int[] Y = new int[8] { 0, 0, 1, 1, 0, 0, 1, 1 };
+            NewBlock(New, Position, X, Y);
         }
     }
 }
