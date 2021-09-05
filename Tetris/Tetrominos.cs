@@ -67,61 +67,54 @@ namespace Tetris
             }
         }
 
-        public static void NewBlock(List<int> New, int Position, int[] X, int[] Y)
+        public static void DrawTermino(List<int> New, int Position, int[,] Location)
         {
-            for (int i = 0; i < X.Length; i++)
+            for (int i = 0; i < (Location.Length / 2); i++)
             {
-                New.Add(Position + X[i] + (Program.Display.Width * Y[i]));
+                New.Add(Position + Location[0, i] + (Program.Display.Width * Location[1, i]));
             }
         }
 
         public static void IBlock(List<int> New, int Position)
         {
-            int[] X = new int[8] { -4, -3, -2, -1, 0, 1, 2, 3 };
-            int[] Y = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
-            NewBlock(New, Position, X, Y);
+            int[,] Location = new int[,] { { -4, -3, -2, -1, 0, 1, 2, 3 }, { 0, 0, 0, 0, 0, 0, 0, 0 } };
+            DrawTermino(New, Position, Location);
         }
 
         public static void JBlock(List<int> New, int Position)
         {
-            int[] X = new int[8] { -2, -1, 0, 1, 2, 3, 2, 3 };
-            int[] Y = new int[8] { 0, 0, 0, 0, 0, 0, 1, 1 };
-            NewBlock(New, Position, X, Y);
+            int[,] Location = new int[,] { { -2, -1, 0, 1, 2, 3, 2, 3 }, { 0, 0, 0, 0, 0, 0, 1, 1 } };
+            DrawTermino(New, Position, Location);
         }
 
         public static void LBlock(List<int> New, int Position)
         {
-            int[] X = new int[8] { -2, -1, 0, 1, 2, 3, -1, -2 };
-            int[] Y = new int[8] { 0, 0, 0, 0, 0, 0, 1, 1 };
-            NewBlock(New, Position, X, Y);
+            int[,] Location = new int[,] { { -2, -1, 0, 1, 2, 3, -1, -2 }, { 0, 0, 0, 0, 0, 0, 1, 1 } };
+            DrawTermino(New, Position, Location);
         }
 
         public static void OBlock(List<int> New, int Position)
         {
-            int[] X = new int[8] { 0, 1, -1, -2, -2, -1, 1, 0 };
-            int[] Y = new int[8] { 0, 0, 0, 0, 1, 1, 1, 1 };
-            NewBlock(New, Position, X, Y);
+            int[,] Location = new int[,] { { 0, 1, -1, -2, -2, -1, 1, 0 }, { 0, 0, 0, 0, 1, 1, 1, 1 } };
+            DrawTermino(New, Position, Location);
         }
 
         public static void SBlock(List<int> New, int Position)
         {
-            int[] X = new int[8] { 0, 1, 2, 3, -1, -2, 0, 1 };
-            int[] Y = new int[8] { 0, 0, 0, 0, 1, 1, 1, 1 };
-            NewBlock(New, Position, X, Y);
+            int[,] Location = new int[,] { { 0, 1, 2, 3, -1, -2, 0, 1 }, { 0, 0, 0, 0, 1, 1, 1, 1 } };
+            DrawTermino(New, Position, Location);
         }
 
         public static void TBlock(List<int> New, int Position)
         {
-            int[] X = new int[8] { 0, 1, -1, -2, 0, 1, 2, 3 };
-            int[] Y = new int[8] { 0, 0, 0, 0, 1, 1, 0, 0 };
-            NewBlock(New, Position, X, Y);
+            int[,] Location = new int[,] { { 0, 1, -1, -2, 0, 1, 2, 3 }, { 0, 0, 0, 0, 1, 1, 0, 0 } };
+            DrawTermino(New, Position, Location);
         }
 
         public static void ZBlock(List<int> New, int Position)
         {
-            int[] X = new int[8] { 0, 1, 2, 3, -1, -2, 0, 1 };
-            int[] Y = new int[8] { 0, 0, 1, 1, 0, 0, 1, 1 };
-            NewBlock(New, Position, X, Y);
+            int[,] Location = new int[,] { { 0, 1, 2, 3, -1, -2, 0, 1 }, { 0, 0, 1, 1, 0, 0, 1, 1 } };
+            DrawTermino(New, Position, Location);
         }
     }
 }
