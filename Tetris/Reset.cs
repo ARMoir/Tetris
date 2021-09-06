@@ -24,7 +24,6 @@ namespace Tetris
 
             Rotate.Check.Count = 0;
             Rotate.Check.Lock = false;
-            Rotate.Check.Pass = false;
             Rotate.Check.Next.Clear();
 
             Score.Row.Complete.Clear();
