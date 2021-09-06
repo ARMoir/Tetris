@@ -29,92 +29,76 @@ namespace Tetris
                 {
                     case (int)Block.Tetromino.IBlock:
                         Program.Display.Active = (int)Block.Tetromino.IBlock;
-                        IBlock(Block.Next, Program.Display.Position);
                         break;
 
                     case (int)Block.Tetromino.JBlock:
                         Program.Display.Active = (int)Block.Tetromino.JBlock;
-                        JBlock(Block.Next, Program.Display.Position);
                         break;
 
                     case (int)Block.Tetromino.LBlock:
                         Program.Display.Active = (int)Block.Tetromino.LBlock;
-                        LBlock(Block.Next, Program.Display.Position);
                         break;
 
                     case (int)Block.Tetromino.OBlock:
                         Program.Display.Active = (int)Block.Tetromino.OBlock;
-                        OBlock(Block.Next, Program.Display.Position);
                         break;
 
                     case (int)Block.Tetromino.SBlock:
                         Program.Display.Active = (int)Block.Tetromino.SBlock;
-                        SBlock(Block.Next, Program.Display.Position);
                         break;
 
                     case (int)Block.Tetromino.TBlock:
                         Program.Display.Active = (int)Block.Tetromino.TBlock;
-                        TBlock(Block.Next, Program.Display.Position);
                         break;
 
                     case (int)Block.Tetromino.ZBlock:
                         Program.Display.Active = (int)Block.Tetromino.ZBlock;
-                        ZBlock(Block.Next, Program.Display.Position);
                         break;
                 }
 
+                SetTermino(Block.Next, Program.Display.Position, Program.Display.Active);
                 Preview.Next.Tetromino = -1;
             }
         }
 
-        public static void DrawTermino(List<int> New, int Position, int[,] Location)
+        public static void SetTermino(List<int> New, int Position, int Tetromino)
         {
-            for (int i = 0; i < (Location.Length / 2); i++)
+            int[,] Minos = new int[,] { { 0 }, { 0 } };
+
+            switch (Tetromino)
             {
-                New.Add(Position + Location[0, i] + (Program.Display.Width * Location[1, i]));
+                case (int)Block.Tetromino.IBlock:
+                    Minos = new int[,] { { -4, -3, -2, -1, 0, 1, 2, 3 }, { 0, 0, 0, 0, 0, 0, 0, 0 } };
+                    break;
+
+                case (int)Block.Tetromino.JBlock:
+                    Minos = new int[,] { { -2, -1, 0, 1, 2, 3, 2, 3 }, { 0, 0, 0, 0, 0, 0, 1, 1 } };
+                    break;
+
+                case (int)Block.Tetromino.LBlock:
+                    Minos = new int[,] { { -2, -1, 0, 1, 2, 3, -1, -2 }, { 0, 0, 0, 0, 0, 0, 1, 1 } };
+                    break;
+
+                case (int)Block.Tetromino.OBlock:
+                    Minos = new int[,] { { 0, 1, -1, -2, -2, -1, 1, 0 }, { 0, 0, 0, 0, 1, 1, 1, 1 } };
+                    break;
+
+                case (int)Block.Tetromino.SBlock:
+                    Minos = new int[,] { { 0, 1, 2, 3, -1, -2, 0, 1 }, { 0, 0, 0, 0, 1, 1, 1, 1 } };
+                    break;
+
+                case (int)Block.Tetromino.TBlock:
+                    Minos = new int[,] { { 0, 1, -1, -2, 0, 1, 2, 3 }, { 0, 0, 0, 0, 1, 1, 0, 0 } };
+                    break;
+
+                case (int)Block.Tetromino.ZBlock:
+                    Minos = new int[,] { { 0, 1, 2, 3, -1, -2, 0, 1 }, { 0, 0, 1, 1, 0, 0, 1, 1 } };
+                    break;
             }
-        }
-
-        public static void IBlock(List<int> New, int Position)
-        {
-            int[,] Location = new int[,] { { -4, -3, -2, -1, 0, 1, 2, 3 }, { 0, 0, 0, 0, 0, 0, 0, 0 } };
-            DrawTermino(New, Position, Location);
-        }
-
-        public static void JBlock(List<int> New, int Position)
-        {
-            int[,] Location = new int[,] { { -2, -1, 0, 1, 2, 3, 2, 3 }, { 0, 0, 0, 0, 0, 0, 1, 1 } };
-            DrawTermino(New, Position, Location);
-        }
-
-        public static void LBlock(List<int> New, int Position)
-        {
-            int[,] Location = new int[,] { { -2, -1, 0, 1, 2, 3, -1, -2 }, { 0, 0, 0, 0, 0, 0, 1, 1 } };
-            DrawTermino(New, Position, Location);
-        }
-
-        public static void OBlock(List<int> New, int Position)
-        {
-            int[,] Location = new int[,] { { 0, 1, -1, -2, -2, -1, 1, 0 }, { 0, 0, 0, 0, 1, 1, 1, 1 } };
-            DrawTermino(New, Position, Location);
-        }
-
-        public static void SBlock(List<int> New, int Position)
-        {
-            int[,] Location = new int[,] { { 0, 1, 2, 3, -1, -2, 0, 1 }, { 0, 0, 0, 0, 1, 1, 1, 1 } };
-            DrawTermino(New, Position, Location);
-        }
-
-        public static void TBlock(List<int> New, int Position)
-        {
-            int[,] Location = new int[,] { { 0, 1, -1, -2, 0, 1, 2, 3 }, { 0, 0, 0, 0, 1, 1, 0, 0 } };
-            DrawTermino(New, Position, Location);
-        }
-
-        public static void ZBlock(List<int> New, int Position)
-        {
-            int[,] Location = new int[,] { { 0, 1, 2, 3, -1, -2, 0, 1 }, { 0, 0, 1, 1, 0, 0, 1, 1 } };
-            DrawTermino(New, Position, Location);
+            for (int i = 0; i < (Minos.Length / 2); i++)
+            {
+                New.Add(Position + Minos[0, i] + (Program.Display.Width * Minos[1, i]));
+            }
         }
     }
 }

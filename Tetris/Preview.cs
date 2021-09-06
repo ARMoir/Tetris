@@ -28,31 +28,31 @@ namespace Tetris
             switch (Next.Tetromino)
             {
                 case (int)Tetrominos.Block.Tetromino.IBlock:
-                    Tetrominos.IBlock(Next.Draw, Next.Position);
+                    Tetrominos.SetTermino(Next.Draw, Next.Position, (int)Tetrominos.Block.Tetromino.IBlock);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.JBlock:
-                    Tetrominos.JBlock(Next.Draw, Next.Position);
+                    Tetrominos.SetTermino(Next.Draw, Next.Position, (int)Tetrominos.Block.Tetromino.JBlock);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.LBlock:
-                    Tetrominos.LBlock(Next.Draw, Next.Position);
+                    Tetrominos.SetTermino(Next.Draw, Next.Position, (int)Tetrominos.Block.Tetromino.LBlock);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.OBlock:
-                    Tetrominos.OBlock(Next.Draw, Next.Position);
+                    Tetrominos.SetTermino(Next.Draw, Next.Position, (int)Tetrominos.Block.Tetromino.OBlock);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.SBlock:
-                    Tetrominos.SBlock(Next.Draw, Next.Position);
+                    Tetrominos.SetTermino(Next.Draw, Next.Position, (int)Tetrominos.Block.Tetromino.SBlock);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.TBlock:
-                    Tetrominos.TBlock(Next.Draw, Next.Position);
+                    Tetrominos.SetTermino(Next.Draw, Next.Position, (int)Tetrominos.Block.Tetromino.TBlock);
                     break;
 
                 case (int)Tetrominos.Block.Tetromino.ZBlock:
-                    Tetrominos.ZBlock(Next.Draw, Next.Position);
+                    Tetrominos.SetTermino(Next.Draw, Next.Position, (int)Tetrominos.Block.Tetromino.ZBlock);
                     break;
             }
 
