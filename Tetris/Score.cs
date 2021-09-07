@@ -63,7 +63,7 @@ namespace Tetris
 
                         Row.Cleared.Clear();
 
-                        for (var j = 0; j < Program.Display.Hight; j++)
+                        for (var j = 0; j < Program.Display.Height; j++)
                         {
                             for (var k = 0; k < Tetrominos.Block.Placed.Count; k++)
                             {

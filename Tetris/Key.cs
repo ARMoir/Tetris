@@ -41,7 +41,7 @@ namespace Tetris
                     case ConsoleKey.A:
                         if (!Rotate.Check.Lock)
                         {
-                            Move.Direction((int)Move.Check.Diretions.Left);
+                            Move.Direction((int)Move.Check.Directions.Left);
                             Rotate.Check.Lock = true;
                         }
                         break;
@@ -56,7 +56,7 @@ namespace Tetris
                     case ConsoleKey.D:
                         if (!Rotate.Check.Lock)
                         {
-                            Move.Direction((int)Move.Check.Diretions.Right);
+                            Move.Direction((int)Move.Check.Directions.Right);
                             Rotate.Check.Lock = true;
                         }
                         break;

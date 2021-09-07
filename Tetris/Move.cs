@@ -11,7 +11,7 @@ namespace Tetris
         public static class Check
         {
             public static bool Safe { get; set; } = false;
-            public enum Diretions { Left = -2, Right = 2 }
+            public enum Directions { Left = -2, Right = 2 }
         }
 
         public static void Direction(int Direction)
