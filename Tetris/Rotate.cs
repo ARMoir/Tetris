@@ -115,7 +115,7 @@ namespace Tetris
         {
             for (int i = 0; i < (Rotation.Length / 2); i++)
             {
-                Check.Next.Add(Tetrominos.Block.Current[i] + Rotation[0, i] + (Program.Display.Width * Rotation[1, i]));
+                Check.Next.Add(Tetrominos.Block.Current[i] + Rotation[0, i] + (Program.Display.Width * (Rotation[1, i] + 1)));
             }
         }
 

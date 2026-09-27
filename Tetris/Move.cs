@@ -22,7 +22,7 @@ namespace Tetris
 
                 for (var i = 0; i < Tetrominos.Block.Current.Count; i++)
                 {
-                    if (Frame.Wall.Values.Contains(Program.Display.FrameChar[Tetrominos.Block.Current[i] + Direction]))
+                    if (Frame.Wall.Values.Contains(Program.Display.FrameChar[Tetrominos.Block.Current[i] + Direction + Program.Display.Width]))
                     {
                         Check.Safe = false;
                     }
@@ -34,7 +34,7 @@ namespace Tetris
 
                     for (var i = 0; i < Tetrominos.Block.Current.Count; i++)
                     {
-                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[i] + Direction);
+                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[i] + Direction + Program.Display.Width);
                     }
                 }
             }
