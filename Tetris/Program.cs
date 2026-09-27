@@ -18,7 +18,7 @@ namespace Tetris
             public static StringBuilder DisplayFrame { get; set; } = new StringBuilder();
             public static ConsoleColor Color { get; set; } = ConsoleColor.Green;
             public static int Width { get; set; } = 0;
-            public static int Hight { get; set; } = 0;
+            public static int Height { get; set; } = 0;
             public static int Active { get; set; } = 0;
             public static int Position { get; set; } = 0;
         }
@@ -32,14 +32,14 @@ namespace Tetris
 
             //Set the Values for Movement Calculations
             string[] Lines = Display.FrameString.ToString().Split((Char)10);
-            Display.Hight = Lines.Length;
+            Display.Height = Lines.Length;
             Display.Width = Lines[0].Length + 1;
             Display.Position = (Display.Width / 2);
 
             //Can only set Window Size in Windows
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Console.SetWindowSize(Display.Width, Display.Hight);
+                Console.SetWindowSize(Display.Width, Display.Height);
             }
 
             //Start Thred to Read Keypress
