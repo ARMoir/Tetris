@@ -23,116 +23,118 @@ namespace Tetris
             public static int Position { get; set; } = 0;
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.CursorVisible = false;
-            Console.Clear();
-            Frame.SetFrame();
-            Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));          
-
-            //Set the Values for Movement Calculations
-            string[] Lines = Display.FrameString.ToString().Split((Char)10);
-            Display.Height = Lines.Length;
-            Display.Width = Lines[0].Length + 1;
-            Display.Position = (Display.Width / 2);
-
-            //Can only set Window Size in Windows
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                Console.SetWindowSize(Display.Width, Display.Height);
-            }
-
             //Start Thred to Read Keypress
             Task.Factory.StartNew(() => Key.Press());
 
-            Console.ForegroundColor = Display.Color;
-            Frame.SetIntro();
-            Console.Write(Display.Intro);      
-
-            while (Frame.Wall.Intro)
+            while (true)
             {
-                //Show the intro Screen 
-                System.Threading.Thread.Sleep(Speed.Set.Delay);
-            }
-            Console.Clear();
-            Speed.Check();
+                Console.CursorVisible = false;
+                Console.Clear();
+                Frame.SetFrame();
+                Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
 
-            while (!Tetrominos.Block.Placed.Contains(Display.Position)) 
-            {
-                Preview.Tetromino();
-                Tetrominos.New();
+                //Set the Values for Movement Calculations
+                string[] Lines = Display.FrameString.ToString().Split((Char)10);
+                Display.Height = Lines.Length;
+                Display.Width = Lines[0].Length + 1;
+                Display.Position = (Display.Width / 2);
+
+                //Can only set Window Size in Windows
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    Console.SetWindowSize(Display.Width, Display.Height);
+                }
+
                 Console.ForegroundColor = Display.Color;
-                Rotate.Check.Lock = false;
+                Frame.SetIntro();
+                Console.Write(Display.Intro);
 
-                Tetrominos.Block.Current.Clear();
-                Tetrominos.Block.Current.AddRange(Tetrominos.Block.Next);
-                Tetrominos.Block.Next.Clear();
-
-                for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
+                while (Frame.Wall.Intro)
                 {
-                    Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
-                }
-
-                for (var i = 0; i < Tetrominos.Block.Current.Count; i++)
-                {
-
-                    Display.FrameChar[Tetrominos.Block.Current[i]] = "#";
-
-                    if (Frame.Wall.Values.Contains(Display.FrameChar[Tetrominos.Block.Current[i] + Display.Width]))
-                    {
-                        Speed.Check();
-                        Speed.Set.Drop = false;
-
-                        Tetrominos.Block.Placed.AddRange(Tetrominos.Block.Current);
-                        Tetrominos.Block.Current.Clear();
-                        Tetrominos.Block.Next.Clear();
-                        Tetrominos.Block.Set = true;
-                    }
-                    else
-                    {
-                        Tetrominos.Block.Next.Add(Tetrominos.Block.Current[i] + Display.Width);
-                    }
-                }
-
-                for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
-                {
-                    Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
-                }
-
-                if(Speed.Set.Drop)
-                {
-                    Score.ScoreBoard.Score++;
-                }
-
-                while (Speed.Set.Paused)
-                {
-                    //Game Paused
+                    //Show the intro Screen 
                     System.Threading.Thread.Sleep(Speed.Set.Delay);
                 }
+                Console.Clear();
+                Speed.Check();
 
-                Score.RowScore();
-                Score.PopScoreBoard(Score.ScoreBoard.Rows, 6);
-                Score.PopScoreBoard(Score.ScoreBoard.Score, 79);
-                Score.PopScoreBoard(Score.ScoreBoard.Level, 152);
+                while (!Tetrominos.Block.Placed.Contains(Display.Position))
+                {
+                    Preview.Tetromino();
+                    Tetrominos.New();
+                    Console.ForegroundColor = Display.Color;
+                    Rotate.Check.Lock = false;
 
-                //Update Display
-                Display.DisplayFrame.Clear();
-                Display.FrameChar.ForEach(Item => Display.DisplayFrame.Append(Item));
+                    Tetrominos.Block.Current.Clear();
+                    Tetrominos.Block.Current.AddRange(Tetrominos.Block.Next);
+                    Tetrominos.Block.Next.Clear();
 
-                //Write Display to Console
-                Console.SetCursorPosition(0, 0);
-                Display.DisplayFrame.Replace("##", "[]");
-                Display.DisplayFrame.Replace("**", "[]");
+                    for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
+                    {
+                        Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
+                    }
 
-                Console.Write(Display.DisplayFrame);
-                System.Threading.Thread.Sleep(Speed.Set.Delay);
+                    for (var i = 0; i < Tetrominos.Block.Current.Count; i++)
+                    {
 
-                Display.FrameChar.Clear();
-                Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
+                        Display.FrameChar[Tetrominos.Block.Current[i]] = "#";
+
+                        if (Frame.Wall.Values.Contains(Display.FrameChar[Tetrominos.Block.Current[i] + Display.Width]))
+                        {
+                            Speed.Check();
+                            Speed.Set.Drop = false;
+
+                            Tetrominos.Block.Placed.AddRange(Tetrominos.Block.Current);
+                            Tetrominos.Block.Current.Clear();
+                            Tetrominos.Block.Next.Clear();
+                            Tetrominos.Block.Set = true;
+                        }
+                        else
+                        {
+                            Tetrominos.Block.Next.Add(Tetrominos.Block.Current[i] + Display.Width);
+                        }
+                    }
+
+                    for (var i = 0; i < Tetrominos.Block.Placed.Count; i++)
+                    {
+                        Display.FrameChar[Tetrominos.Block.Placed[i]] = "*";
+                    }
+
+                    if (Speed.Set.Drop)
+                    {
+                        Score.ScoreBoard.Score++;
+                    }
+
+                    while (Speed.Set.Paused)
+                    {
+                        //Game Paused
+                        System.Threading.Thread.Sleep(Speed.Set.Delay);
+                    }
+
+                    Score.RowScore();
+                    Score.PopScoreBoard(Score.ScoreBoard.Rows, 6);
+                    Score.PopScoreBoard(Score.ScoreBoard.Score, 79);
+                    Score.PopScoreBoard(Score.ScoreBoard.Level, 152);
+
+                    //Update Display
+                    Display.DisplayFrame.Clear();
+                    Display.FrameChar.ForEach(Item => Display.DisplayFrame.Append(Item));
+
+                    //Write Display to Console
+                    Console.SetCursorPosition(0, 0);
+                    Display.DisplayFrame.Replace("##", "[]");
+                    Display.DisplayFrame.Replace("**", "[]");
+
+                    Console.Write(Display.DisplayFrame);
+                    System.Threading.Thread.Sleep(Speed.Set.Delay);
+
+                    Display.FrameChar.Clear();
+                    Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
+                }
+
+                Reset.Now();
             }
-
-            Reset.Now();
-            Main(args);
         }
     }
 }
